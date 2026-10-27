@@ -34,7 +34,7 @@ When the user just says "update the <client> preview" without saying how, ask in
    - `origin/staging` holds someone else's unpublished work: show their commit messages, and say your changes will go on top of theirs. If that's a problem, ask Nicky.
 3. **First push for this preview?** If `preview.json` still has the default `gate` (empty logo, background `#14161a`) and `passcode` is true, do the branding from **preview-new** step 5. If `gh secret list --repo …` doesn't show `PREVIEW_PASSCODE`, do preview-new step 6 (needs admin).
 4. **Review the change:** `git status --short` and `git diff --stat`. Summarise: X pages changed, Y added, Z removed, naming the pages. Flag anything odd: a missing `site/index.html`, files changed outside `site/` other than `preview.json`, or lots of removals.
-5. If Node is installed, run the local check and report broken-link warnings, grouped.
+5. Refresh ONE's publishing script (commands.md → Keep the publishing tools current). Then, if Node is installed, run the local check and report broken-link warnings, grouped.
 6. If the user hasn't given a label, ask in a question box with suggestions (the next round number, e.g. "R18", and a description of the change), and commit: `<Client>: <label>`.
 7. `git push -u origin staging`. Watch the run, get the staging link, and say: "Check the changed pages on this studio-only link (enter the passcode if asked). Tell me when it's good to publish to the client, or what to change."
 

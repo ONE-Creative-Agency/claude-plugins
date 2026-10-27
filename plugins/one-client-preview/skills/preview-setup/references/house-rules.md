@@ -37,7 +37,7 @@ Firebase project one-client-pages  (nobody logs in to Firebase)
 2. **Confirm before anything the client will see**, which means any push to `main`. Say plainly "This updates the client link `https://….web.app`" and wait for a clear yes in the chat.
 3. **Never** force-push, reset hard, delete a repo, delete a branch on GitHub, delete a Firebase site, or change repo settings other than setting the `PREVIEW_PASSCODE` secret and adding the Studio team to a new preview. If one of these is needed, tell the user to ask Nicky.
 4. **Never run Firebase commands locally.** Publishing happens only on GitHub.
-5. **Only touch repos in ONE-Creative-Agency whose name ends in `-preview`.** Never edit `tools/` or `.github/` in them.
+5. **Only touch repos in ONE-Creative-Agency whose name ends in `-preview`.** Never edit `tools/` or `.github/` in them, except for refreshing `tools/build.js` from the template (commands.md → Keep the publishing tools current).
 6. Keep command output out of the chat. Summarise it in a line.
 7. When something fails, quote the one line of the error that matters, say what it means in plain words, and say who fixes it (the user, or Nicky). Don't retry the same failing command more than once.
 8. **Job folders on the NAS are read-only except for one thing:** after a publish to the client link, add a new dated copy of the site under `03_Work Files/Website preview/`. Never delete, move or overwrite anything there. Never put the project folder itself on the NAS or in a synced folder.

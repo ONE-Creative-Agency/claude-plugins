@@ -114,6 +114,16 @@ Also write `<dest>/PUBLISHED.txt` with: client, client link, label, date and tim
 
 **Never delete, move or overwrite anything in the job folder.** Only add the new dated folder.
 
+## Keep the publishing tools current (before every push to staging or main)
+
+ONE fixes the build script in the template from time to time; each preview has its own copy. Refresh it:
+
+`cd "<repo>" && gh api repos/ONE-Creative-Agency/preview-template/contents/tools/build.js -H "Accept: application/vnd.github.raw" > tools/build.js.new && mv tools/build.js.new tools/build.js && git status --short tools/build.js`
+
+If it changed, it goes in the same commit as the user's work. Mention it in one line: "I also updated ONE's publishing script to the latest version." If the download fails, delete `tools/build.js.new` and carry on with the existing script.
+
+Only `tools/build.js` is refreshed this way. If the template's `.github/workflows/deploy.yml` differs from the preview's (`gh api repos/ONE-Creative-Agency/preview-template/contents/.github/workflows/deploy.yml -H "Accept: application/vnd.github.raw" | diff -q - .github/workflows/deploy.yml`), don't change it. Studio logins can't push workflow files. Tell the user to ask Nicky to update the workflow for this preview.
+
 ## Local check before pushing (only if Node is installed)
 
 `cd "<repo>" && PREVIEW_PASSCODE=local-check-123 node tools/build.js; rm -rf public firebase.json .firebaserc`
