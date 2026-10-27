@@ -28,7 +28,7 @@ If everything is ✅, say so and stop.
 
 ## 3. Install what's missing
 
-Ask once, naming the tools. Use the install commands in commands.md. If Windows shows "Do you want to allow this app to make changes?", tell the user to click **Yes**. If the tool isn't found after installing, follow the PATH note in commands.md.
+Ask once in a question box, naming the tools: "Yes, install them" / "Not now". Use the install commands in commands.md. If Windows shows "Do you want to allow this app to make changes?", tell the user to click **Yes**. If the tool isn't found after installing, follow the PATH note in commands.md.
 
 ## 4. GitHub login
 
@@ -40,7 +40,7 @@ Explain once: "GitHub stores each client's website and publishes it for us."
 
 ## 5. Git name and email
 
-If they're not set, ask for the user's full name and work email, then set them:
+If they're not set, offer the name and email from their GitHub account (`gh api user --jq '.name,.email'`) in a question box, or let them type them. Then set them:
 `git config --global user.name "<Name Surname>"` · `git config --global user.email "<email>"`
 
 ## 6. Organisation and Studio team
@@ -52,8 +52,8 @@ If they're not set, ask for the user's full name and work email, then set them:
 
 Explain: "Each client gets its own folder on your computer, linked to GitHub. They all live in one parent folder, and you open Claude Code on a client's folder to work on that site."
 
-- Suggest `C:\GitHub_Local` on Windows (`/c/GitHub_Local` in Git Bash), or `~/GitHub_Local` on a Mac. Ask if that's fine.
-- **Never** a Google Drive, Dropbox, OneDrive or iCloud folder: sync apps fight with Git and can undo changes. Say so if they suggest one.
+- Ask in a question box: `C:\GitHub_Local` (Recommended) on Windows (`/c/GitHub_Local` in Git Bash), or `~/GitHub_Local` on a Mac, plus the option to type another path.
+- **Never** the NAS, or a Google Drive, Dropbox, OneDrive or iCloud folder: shared and synced folders fight with Git and can undo changes. Say so if they suggest one.
 - Create it if needed (`mkdir -p`) and save it: `git config --global one.previewFolder "<path>"` (on Windows use the `C:/GitHub_Local` form).
 
 ## 8. Done

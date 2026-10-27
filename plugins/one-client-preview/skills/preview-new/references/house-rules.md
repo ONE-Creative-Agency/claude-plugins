@@ -43,6 +43,15 @@ Firebase project one-client-pages  (nobody logs in to Firebase)
 8. **Job folders on the NAS are read-only except for one thing:** after a publish to the client link, add a new dated copy of the site under `03_Work Files/Website preview/`. Never delete, move or overwrite anything there. Never put the project folder itself on the NAS or in a synced folder.
 9. Explain in plain language. The person is a designer, not a developer. Introduce each technical word once ("a branch is a separate line of work in the repo").
 
+## Asking the user
+
+- **Every question goes in a question box** (the AskUserQuestion tool), **one question per box**. Wait for the answer before asking the next. Never list several questions in a chat message for the user to answer in the reply box.
+- Give 2–4 concrete options, with the recommended one first and marked "(Recommended)". The box always lets the user type their own answer, so don't add an "Other" option.
+- Make the options real: detected folders, suggested names, the client you've inferred. For example, for "where are the files?", offer the folders you found that contain an `index.html`.
+- Skip any question the user's message already answered, and say in one line what you took from it ("Client: Dalton Foundry, credit: Small Circle").
+- Use a question box for the "go ahead?" before a push to `main` too: options "Yes, publish to the client link" / "Not yet".
+- Only ask in plain chat when the answer is long free text that no option could cover (e.g. a brief for the site).
+
 ## Who to ask
 
 Nicky (Head of Operations) owns the GitHub org, Firebase and these settings. Send people to her for: org invites, joining the Studio team, access to a preview the Studio team isn't on, passcode changes on a repo they didn't create, custom domains (e.g. `client.oneagency.one`), deleting previews.

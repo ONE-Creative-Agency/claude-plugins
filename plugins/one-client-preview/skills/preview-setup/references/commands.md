@@ -84,6 +84,18 @@ Find where `index.html` sits; that folder is the **site root**. Copy its content
 | **Changed files only**: copy over the top | `cd "<repo>" && cp -R "<site root>/." site/` |
 | Tidy up | `cd "<repo>" && find site \( -name .DS_Store -o -name Thumbs.db -o -name __MACOSX \) -prune -exec rm -rf {} +` |
 
+## Bringing in a claude.ai artifact (a link like `claude.ai/artifact/…` or `claude.ai/code/artifact/…`)
+
+1. Read it with the **Artifact tool** (`action: "read"`, `url`). Never use WebFetch or curl: artifacts are private and need the user's own sign-in. If there's no Artifact tool, or the read is refused (someone else's artifact not shared with the user), ask the user to share it with themselves or download the files, then use "Bringing in files that already exist".
+2. Work out what it is from the read result:
+   - **An HTML page or site** (raw HTML comes back): list its files (`action: "list"`, `scope: "files"`) and read each one (`paths`). Save each file under `site/` at its own path; the page itself becomes `site/index.html`.
+   - **A Claude Design canvas** (an artifact of the "Design" type, made of artboards): it's a design, not a website. Say so in one line, then **build** the pages in `site/` to match it, reading its artboards and its design system. This is a build: check every page against the design before staging.
+   - **Another type** (Slides, Docs, Dashboard…): not a website. Say so and ask what they want online.
+3. **Images and files stored in the artifact** (references to `/_blob/<id>`, or an asset listing with `scope: "assets"`): read each by its id (`path: "<id>"`), save into `site/assets/images/` with a readable name, and rewrite every reference to the new relative path. Nothing in `site/` may point at claude.ai.
+4. **Claude-only features:** search the files for `window.claude`. Saving data, shared state, comments and "ask Claude" buttons don't work outside claude.ai. List what will stop working and ask before carrying on.
+5. Links to `cdnjs`, `jsdelivr`, `unpkg` and Google Fonts are fine and can stay.
+6. Carry on as for any other files: the whole-site check, the local check, then staging.
+
 ## Copy to the job folder on the NAS (after every publish to the client link)
 
 The job folder is the client job's folder on the studio NAS, mapped as a drive letter on Windows (Git Bash: `Z:/…` or `/z/…`) or mounted under `/Volumes/<share>/…` on a Mac. It's saved per project on this computer:

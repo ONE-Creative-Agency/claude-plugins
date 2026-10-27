@@ -4,7 +4,7 @@ Lets ONE studio staff build client websites in a linked project folder and put t
 
 ## Skills
 - **preview-setup**: once per computer. Installs the GitHub CLI, logs in to GitHub, checks ONE-Creative-Agency and the Studio team, and sets the preview folder.
-- **preview-new**: a new client preview. Creates the repo from `ONE-Creative-Agency/preview-template` with its linked folder, gives the Studio team access, and sets up the passcode page. Then the site is either built in the folder or brought in from finished files.
+- **preview-new**: a new client preview. Creates the repo from `ONE-Creative-Agency/preview-template` with its linked folder, gives the Studio team access, and sets up the passcode page. Then the site is built in the folder, brought in from finished files, or taken from a claude.ai artifact link (HTML artifact or Claude Design canvas).
 - **preview-update**: "send it to staging", "publish to the client", bringing in files made elsewhere, passcode changes.
 
 ## Needs

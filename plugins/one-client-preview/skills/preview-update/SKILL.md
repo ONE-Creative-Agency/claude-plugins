@@ -18,11 +18,11 @@ Read `references/house-rules.md` and `references/commands.md` first.
 
 - **A. Send to staging** (most common): put what's changed on the studio check link
 - **B. Publish staging to the client link**
-- **C. Bring in files made elsewhere** (a folder or zip), then do A
+- **C. Bring in files made elsewhere** (a folder, a zip, or a claude.ai artifact link), then do A
 - **D. Change the passcode**
 - **E. Copy the published site to the job folder** (automatic after B, or on request: "copy the published site to the job folder")
 
-When the user just says "update the <client> preview" without saying how, ask whether the changes are already in the folder or the files are somewhere else.
+When the user just says "update the <client> preview" without saying how, ask in a question box: "Changes are already in the folder" / "Files on my computer" / "A claude.ai artifact link".
 
 ## Job A: send to staging
 
@@ -35,7 +35,7 @@ When the user just says "update the <client> preview" without saying how, ask wh
 3. **First push for this preview?** If `preview.json` still has the default `gate` (empty logo, background `#14161a`) and `passcode` is true, do the branding from **preview-new** step 5. If `gh secret list --repo …` doesn't show `PREVIEW_PASSCODE`, do preview-new step 6 (needs admin).
 4. **Review the change:** `git status --short` and `git diff --stat`. Summarise: X pages changed, Y added, Z removed, naming the pages. Flag anything odd: a missing `site/index.html`, files changed outside `site/` other than `preview.json`, or lots of removals.
 5. If Node is installed, run the local check and report broken-link warnings, grouped.
-6. Ask for a short label if the user hasn't given one ("R17", "contact page fixes"), and commit: `<Client>: <label>`.
+6. If the user hasn't given a label, ask in a question box with suggestions (the next round number, e.g. "R18", and a description of the change), and commit: `<Client>: <label>`.
 7. `git push -u origin staging`. Watch the run, get the staging link, and say: "Check the changed pages on this studio-only link (enter the passcode if asked). Tell me when it's good to publish to the client, or what to change."
 
 **Straight to main instead?** Only if the user asks. Explain once that it skips the check link and goes directly to the client. Then confirm "This updates the client link https://<siteId>.web.app. Go ahead?", commit on main, push, watch, and give the link, then do Job E.
@@ -51,8 +51,9 @@ When the user just says "update the <client> preview" without saying how, ask wh
 
 ## Job C: bring in files made elsewhere
 
-1. Find the zip or folder, and its site root (where `index.html` is, or the HTML files).
-2. Ask: "Is this the **whole website**, or **only the files that changed**?"
+1. **Artifact link:** read it (commands.md → Bringing in a claude.ai artifact). A Claude Design canvas means rebuilding the changed pages to match; an HTML artifact gives files to bring in.
+   **Zip or folder:** find it and its site root (where `index.html` is, or the HTML files).
+2. Ask in a question box: "Whole website" / "Only the files that changed".
    - **Whole site:** mirror it into `site/`. Pages that aren't in the new set get removed.
    - **Changed files only:** copy over the top. Nothing is removed.
    Check the answer against the files (a whole site has `index.html` and roughly as many files as `site/` now has) and say what you see.
