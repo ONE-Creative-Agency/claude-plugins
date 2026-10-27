@@ -84,6 +84,24 @@ Find where `index.html` sits; that folder is the **site root**. Copy its content
 | **Changed files only**: copy over the top | `cd "<repo>" && cp -R "<site root>/." site/` |
 | Tidy up | `cd "<repo>" && find site \( -name .DS_Store -o -name Thumbs.db -o -name __MACOSX \) -prune -exec rm -rf {} +` |
 
+## Copy to the job folder on the NAS (after every publish to the client link)
+
+The job folder is the client job's folder on the studio NAS, mapped as a drive letter on Windows (Git Bash: `Z:/…` or `/z/…`) or mounted under `/Volumes/<share>/…` on a Mac. It's saved per project on this computer:
+
+| What | Command |
+|---|---|
+| Read the saved job folder | `cd "<repo>" && git config --get one.jobFolder` |
+| Save it | `cd "<repo>" && git config one.jobFolder "<job folder>"` (on Windows use the `Z:/Clients/...` form) |
+| Check it's reachable | `ls "<job folder>/03_Work Files"` |
+| Copy the published site | `mkdir -p "<dest>" && cp -R "<repo>/site/." "<dest>/"` |
+| Check the copy | `find "<dest>" -type f \| wc -l` (should match `find "<repo>/site" -type f \| wc -l`) |
+
+`<dest>` = `<job folder>/03_Work Files/Website preview/<YYYY-MM-DD> <label>` (date from `date +%F`). If that folder already exists, add the time: `<YYYY-MM-DD HHMM> <label>`.
+
+Also write `<dest>/PUBLISHED.txt` with: client, client link, label, date and time, published by (`git config user.name`), and the commit (`git rev-parse --short HEAD`). Never the passcode.
+
+**Never delete, move or overwrite anything in the job folder.** Only add the new dated folder.
+
 ## Local check before pushing (only if Node is installed)
 
 `cd "<repo>" && PREVIEW_PASSCODE=local-check-123 node tools/build.js; rm -rf public firebase.json .firebaserc`

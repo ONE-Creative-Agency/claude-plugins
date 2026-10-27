@@ -13,6 +13,6 @@ Lets ONE studio staff build client websites in a linked project folder and put t
 
 ## Links
 - `staging` → studio-only check link `https://<siteId>--staging-<code>.web.app` (expires 30 days after the last push)
-- `main` → client link `https://<siteId>.web.app`
+- `main` → client link `https://<siteId>.web.app`; each publish also saves a dated copy to the job folder on the NAS (`03_Work Files/Website preview/`)
 
 Publishing runs on GitHub Actions with a keyless login to the Firebase project `one-client-pages`. Owner: Nicky.

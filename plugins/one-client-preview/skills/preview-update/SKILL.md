@@ -20,6 +20,7 @@ Read `references/house-rules.md` and `references/commands.md` first.
 - **B. Publish staging to the client link**
 - **C. Bring in files made elsewhere** (a folder or zip), then do A
 - **D. Change the passcode**
+- **E. Copy the published site to the job folder** (automatic after B, or on request: "copy the published site to the job folder")
 
 When the user just says "update the <client> preview" without saying how, ask whether the changes are already in the folder or the files are somewhere else.
 
@@ -37,7 +38,7 @@ When the user just says "update the <client> preview" without saying how, ask wh
 6. Ask for a short label if the user hasn't given one ("R17", "contact page fixes"), and commit: `<Client>: <label>`.
 7. `git push -u origin staging`. Watch the run, get the staging link, and say: "Check the changed pages on this studio-only link (enter the passcode if asked). Tell me when it's good to publish to the client, or what to change."
 
-**Straight to main instead?** Only if the user asks. Explain once that it skips the check link and goes directly to the client. Then confirm "This updates the client link https://<siteId>.web.app. Go ahead?", commit on main, push, watch, and give the link.
+**Straight to main instead?** Only if the user asks. Explain once that it skips the check link and goes directly to the client. Then confirm "This updates the client link https://<siteId>.web.app. Go ahead?", commit on main, push, watch, and give the link, then do Job E.
 
 ## Job B: publish staging to the client
 
@@ -46,6 +47,7 @@ When the user just says "update the <client> preview" without saying how, ask wh
 3. Confirm: "This updates the client link https://<siteId>.web.app with: <commit labels>. Go ahead?"
 4. Publish (commands.md → Publish staging to the client). If the fast-forward fails, follow the recovery note. Watch the run and give the client link.
 5. Mention that people who already entered the passcode won't be asked again.
+6. **Copy to the job folder** (Job E).
 
 ## Job C: bring in files made elsewhere
 
@@ -62,6 +64,13 @@ When the user just says "update the <client> preview" without saying how, ask wh
 2. Warn them: "Everyone with the current code will need the new one."
 3. Agree the new passcode, set the secret, then re-run the deploy on `main` (and on `staging` if it exists). Watch the runs.
 4. Remind them to update the passcode wherever the job keeps it.
+
+## Job E: copy the published site to the job folder
+
+After every successful publish to the client link (never after staging):
+1. Read the saved job folder (commands.md → Copy to the job folder). If none is saved, ask: "Where's the <client> job folder on the NAS? Paste the path, e.g. `Z:\Clients\Dalton Foundry\DF26012 Website`." Check that its `03_Work Files` folder exists. If it doesn't, show what is there and ask; don't create `03_Work Files` without a yes. Save the path for this project.
+2. Copy `site/` to `03_Work Files/Website preview/<date> <label>`, write `PUBLISHED.txt`, and check the file count matches.
+3. Tell the user where it went in one line. If the NAS isn't reachable (drive not mapped, off-site), say so and offer to do it next time; the publish itself is done either way.
 
 ## Wrap up
 

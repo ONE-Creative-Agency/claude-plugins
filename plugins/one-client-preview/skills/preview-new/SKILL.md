@@ -75,12 +75,13 @@ The user picks it, or you suggest one: two simple words and a number, e.g. `harb
 
 Changes requested: make them in `site/`, commit, push staging again, and send the new check link.
 
-**To the client link:** confirm "This puts the site on the client link https://<siteId>.web.app. Go ahead?", then publish staging to main (commands.md), watch, and give the client link.
+**To the client link:** confirm "This puts the site on the client link https://<siteId>.web.app. Go ahead?", then publish staging to main (commands.md), watch, and give the client link. Then copy the published site to the job folder, following **preview-update** Job E. The first time, Claude asks for the job's folder on the NAS.
 
 ## 9. Wrap up
 
 - **Client link:** https://<siteId>.web.app. Send it to the client, and send the passcode separately.
 - **Staging link:** studio only, expires 30 days after the last staging push.
+- **Job folder copy:** where the published site was saved under `03_Work Files`.
 - **Project folder:** `<repo>`. "Next time, open Claude Code on this folder, make the changes, and say *send it to staging*."
 - Any notes: the Studio team couldn't be added (tell Nicky), or the Adobe Fonts domain.
 - A custom address like `client.oneagency.one` is Nicky's job.
