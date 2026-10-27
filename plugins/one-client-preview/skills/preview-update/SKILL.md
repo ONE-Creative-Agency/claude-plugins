@@ -33,10 +33,11 @@ When the user just says "update the <client> preview" without saying how, ask in
    - No staging branch yet: `git checkout -b staging` from the current main with the edits.
    - `origin/staging` holds someone else's unpublished work: show their commit messages, and say your changes will go on top of theirs. If that's a problem, ask Nicky.
 3. **First push for this preview?** If `preview.json` still has the default `gate` (empty logo, background `#14161a`) and `passcode` is true, do the branding from **preview-new** step 5. If `gh secret list --repo …` doesn't show `PREVIEW_PASSCODE`, do preview-new step 6 (needs admin).
-4. **Review the change:** `git status --short` and `git diff --stat`. Summarise: X pages changed, Y added, Z removed, naming the pages. Flag anything odd: a missing `site/index.html`, files changed outside `site/` other than `preview.json`, or lots of removals.
-5. Refresh ONE's publishing script (commands.md → Keep the publishing tools current). Then, if Node is installed, run the local check and report broken-link warnings, grouped.
-6. If the user hasn't given a label, ask in a question box with suggestions (the next round number, e.g. "R18", and a description of the change), and commit: `<Client>: <label>`.
-7. `git push -u origin staging`. Watch the run, get the staging link, and say: "Check the changed pages on this studio-only link (enter the passcode if asked). Tell me when it's good to publish to the client, or what to change."
+4. **Refresh ONE's publishing script now**, before deciding whether there's anything to publish (commands.md → Keep the publishing tools current). A script update alone is enough to publish.
+5. **Review the change:** `git status --short` and `git diff --stat`. Summarise: X pages changed, Y added, Z removed, naming the pages. Flag anything odd: a missing `site/index.html`, files changed outside `site/` other than `preview.json` and the script refresh, or lots of removals.
+6. If Node is installed, run the local check and report broken-link warnings, grouped.
+7. If the user hasn't given a label, ask in a question box with suggestions (the next round number, e.g. "R18", and a description of the change), and commit: `<Client>: <label>`.
+8. `git push -u origin staging` (creates `staging` on GitHub if it isn't there yet). If no run starts within about 30 seconds, start it yourself (commands.md → Watching). Watch the run, get the staging link, and say: "Check the changed pages on this studio-only link (enter the passcode if asked). Tell me when it's good to publish to the client, or what to change."
 
 **Straight to main instead?** Only if the user asks. Explain once that it skips the check link and goes directly to the client. Then confirm "This updates the client link https://<siteId>.web.app. Go ahead?", commit on main, push, watch, and give the link, then do Job E.
 

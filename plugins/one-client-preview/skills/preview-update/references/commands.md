@@ -64,7 +64,7 @@ If a fresh template clone has no `site/` yet, GitHub was still copying the templ
 | Switch to existing staging, keeping local edits | `git checkout staging` (if it doesn't exist locally: `git checkout -b staging --track origin/staging`) |
 | What changed | `git status --short` · counts: `git diff --stat` |
 | Commit everything | `git add -A && git commit -m "<message>"` |
-| Push staging | `git push -u origin staging` |
+| Push staging | `git push -u origin staging` (if GitHub has no `staging` branch yet, this creates it) |
 | Publish staging to the client | `git checkout main && git pull --ff-only origin main && git merge --ff-only staging && git push origin main && git checkout staging` |
 
 **Edits made while on `main`.** If the user has been building on `main` (a new repo starts there), move the work to staging without losing it: `git checkout -b staging` (or, if staging exists, `git stash && git checkout staging && git stash pop`), then commit there.
@@ -120,7 +120,9 @@ ONE fixes the build script in the template from time to time; each preview has i
 
 `cd "<repo>" && gh api repos/ONE-Creative-Agency/preview-template/contents/tools/build.js -H "Accept: application/vnd.github.raw" > tools/build.js.new && mv tools/build.js.new tools/build.js && git status --short tools/build.js`
 
-If it changed, it goes in the same commit as the user's work. Mention it in one line: "I also updated ONE's publishing script to the latest version." If the download fails, delete `tools/build.js.new` and carry on with the existing script.
+If it changed, ask in a question box first: "ONE's publishing script for this preview is out of date. Update it as part of this publish?" with "Yes, update it (Recommended)" / "Not now". Older previews have a `CLAUDE.md` that says not to edit `tools/`, so the user's yes is what authorises the refresh. If yes, it goes in the same commit as the user's work, and it still counts as something to publish when the site itself hasn't changed. If the download fails, delete `tools/build.js.new` and carry on with the existing script.
+
+Older previews only start a deploy for changes in `site/` or `preview.json`. If the push contains only the script refresh, start the run yourself: `gh workflow run deploy.yml --repo ONE-Creative-Agency/<name>-preview --ref <branch>`.
 
 Only `tools/build.js` is refreshed this way. If the template's `.github/workflows/deploy.yml` differs from the preview's (`gh api repos/ONE-Creative-Agency/preview-template/contents/.github/workflows/deploy.yml -H "Accept: application/vnd.github.raw" | diff -q - .github/workflows/deploy.yml`), don't change it. Studio logins can't push workflow files. Tell the user to ask Nicky to update the workflow for this preview.
 
