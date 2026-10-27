@@ -1,6 +1,6 @@
 ---
 name: preview-update
-description: Publish work on an existing ONE client website preview from Claude Code. Sends what changed in the client's folder to the studio-only staging link, publishes staging to the client link, brings in files made elsewhere, opens a preview's folder to work on, or changes the passcode. Use when someone says "send it to staging", "put this on staging", "let me see it online", "publish to the client", "publish staging", "update the <client> preview", "here's R17 for Dalton", "work on the <client> preview", or "change the passcode".
+description: Publish work on an existing ONE client website preview from Claude Code. Sends what changed in the client's folder to the studio-only staging link, publishes staging to the client link, brings in files made elsewhere, opens a preview's folder to work on, or changes the passcode. Use when someone says "send it to staging", "put this on staging", "let me see it online", "publish to the client", "publish staging", "update the Dalton preview", "here's R17 for Dalton", "work on the Dalton preview", or "change the passcode".
 ---
 
 # Send to staging, publish, and other updates

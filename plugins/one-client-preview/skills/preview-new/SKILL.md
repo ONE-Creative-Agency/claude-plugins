@@ -1,6 +1,6 @@
 ---
 name: preview-new
-description: Start a new ONE client website preview in Claude Code. Creates the client's private GitHub repo from ONE's template and its linked folder on the user's computer, gives the Studio team access, and sets up the passcode page. Then either builds the site in that folder or brings in finished files that already exist, and publishes to staging and the client link. Use when someone says "new client preview", "start a preview for <client>", "set up a website preview", "put this new site online", or has finished HTML for a client that has no preview yet.
+description: Start a new ONE client website preview in Claude Code. Creates the client's private GitHub repo from ONE's template and its linked folder on the user's computer, gives the Studio team access, and sets up the passcode page. Then either builds the site in that folder or brings in finished files that already exist, and publishes to staging and the client link. Use when someone says "new client preview", "start a preview for Dalton", "set up a website preview", "put this new site online", or has finished HTML for a client that has no preview yet.
 ---
 
 # New client preview
