@@ -1,0 +1,7 @@
+{
+  "name": "one-client-preview",
+  "version": "0.2.0",
+  "description": "Put a client website preview online for ONE studio staff: first-time setup, new previews and updates, with an optional passcode page. Files go to GitHub; GitHub publishes to Firebase.",
+  "author": { "name": "ONE Creative Agency" },
+  "keywords": ["preview", "firebase", "github", "client website", "passcode"]
+}

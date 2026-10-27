@@ -1,0 +1,12 @@
+{
+  "name": "one-agency",
+  "owner": { "name": "ONE Creative Agency" },
+  "metadata": { "description": "ONE Creative Agency's Claude Code plugins for the studio." },
+  "plugins": [
+    {
+      "name": "one-client-preview",
+      "source": "./plugins/one-client-preview",
+      "description": "Put client website previews online: first-time setup, new previews, send to staging, publish to the client link, passcode pages."
+    }
+  ]
+}
