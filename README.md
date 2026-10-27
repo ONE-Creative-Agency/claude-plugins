@@ -15,4 +15,6 @@ Update later: `/plugin` → Marketplaces → one-agency → Update.
 |---|---|
 | `one-client-preview` | Client website previews: first-time setup, new preview, send to staging, publish to the client link, passcode page. |
 
+Studio how-to: https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK
+
 Owner: Nicky.

@@ -61,3 +61,4 @@ Explain: "Each client gets its own folder on your computer, linked to GitHub. Th
 Three or four lines: GitHub login, org and team status, preview folder, Node yes/no. Then what's next:
 - "To start a new client site, say **new client preview**."
 - "To work on an existing one, open Claude Code on that client's folder inside <preview folder>, then make changes and say **send it to staging**."
+- "The short studio guide is here: https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK"

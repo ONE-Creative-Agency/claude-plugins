@@ -1,7 +1,16 @@
 {
   "name": "one-client-preview",
-  "version": "0.3.1",
-  "description": "Put a client website preview online for ONE studio staff: first-time setup, new previews and updates, with an optional passcode page. Files go to GitHub; GitHub publishes to Firebase.",
-  "author": { "name": "ONE Creative Agency" },
-  "keywords": ["preview", "firebase", "github", "client website", "passcode"]
+  "version": "0.3.2",
+  "description": "Put client website previews online for ONE studio staff: first-time setup, new previews, send to staging, publish to the client link, passcode pages. How-to: https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK",
+  "author": {
+    "name": "ONE Creative Agency"
+  },
+  "keywords": [
+    "preview",
+    "firebase",
+    "github",
+    "client website",
+    "passcode"
+  ],
+  "homepage": "https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK"
 }
