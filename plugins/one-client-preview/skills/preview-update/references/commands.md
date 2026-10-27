@@ -27,6 +27,7 @@ Work out the OS once: `uname -s` (`MINGW…`/`MSYS…` = Windows, `Darwin` = Mac
 
 | Tool | Windows | Mac |
 |---|---|---|
+| Git | Comes with Claude Code | `xcode-select --install`, then tell the user to click **Install** in the macOS box "install the command line developer tools" (about 5 minutes), and wait |
 | GitHub CLI | `winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements` | `brew install gh` (no Homebrew: send them to https://cli.github.com) |
 | Node (optional) | `winget install --id OpenJS.NodeJS.LTS -e --source winget --accept-package-agreements --accept-source-agreements` | `brew install node` |
 

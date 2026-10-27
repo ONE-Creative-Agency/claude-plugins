@@ -70,7 +70,7 @@ When the user just says "update the <client> preview" without saying how, ask in
 ## Job E: copy the published site to the job folder
 
 After every successful publish to the client link (never after staging):
-1. Read the saved job folder (commands.md → Copy to the job folder). If none is saved, ask: "Where's the <client> job folder on the NAS? Paste the path, e.g. `Z:\Clients\Dalton Foundry\DF26012 Website`." Check that its `03_Work Files` folder exists. If it doesn't, show what is there and ask; don't create `03_Work Files` without a yes. Save the path for this project.
+1. Read the saved job folder (commands.md → Copy to the job folder). If none is saved, ask: "Where's the <client> job folder on the NAS? Paste the path." Help them copy it: Windows, Shift + right-click the folder → **Copy as path** (e.g. `Z:\Clients\Dalton Foundry\DF26012 Website`); Mac, select the folder in Finder, then Option + right-click → **Copy … as Pathname** (e.g. `/Volumes/Clients/Dalton Foundry/DF26012 Website`), or drag the folder into the chat. Check that its `03_Work Files` folder exists. If it doesn't, show what is there and ask; don't create `03_Work Files` without a yes. Save the path for this project.
 2. Copy `site/` to `03_Work Files/Website preview/<date> <label>`, write `PUBLISHED.txt`, and check the file count matches.
 3. Tell the user where it went in one line. If the NAS isn't reachable (drive not mapped, off-site), say so and offer to do it next time; the publish itself is done either way.
 

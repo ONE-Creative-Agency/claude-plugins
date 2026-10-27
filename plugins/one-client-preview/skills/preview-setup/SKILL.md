@@ -16,7 +16,7 @@ Keep it short, roughly:
 ## 2. Check what's there
 
 Run the Checks from commands.md, then report one line per item: ✅ ready / ❌ missing.
-- Git (always there on Windows, because Claude Code needs it)
+- Git (always there on Windows, because Claude Code needs it; on a Mac, `git --version` may open a macOS box offering to install the developer tools: tell the user to click **Install**)
 - GitHub CLI (`gh`)
 - GitHub login
 - Git name and email
@@ -54,6 +54,7 @@ Explain: "Each client gets its own folder on your computer, linked to GitHub. Th
 
 - Ask in a question box: `C:\GitHub_Local` (Recommended) on Windows (`/c/GitHub_Local` in Git Bash), or `~/GitHub_Local` on a Mac, plus the option to type another path.
 - **Never** the NAS, or a Google Drive, Dropbox, OneDrive or iCloud folder: shared and synced folders fight with Git and can undo changes. Say so if they suggest one.
+- Tell them where to find it: Windows, File Explorer → This PC → Local Disk (C:) → GitHub_Local; Mac, Finder → Go → Home → GitHub_Local (drag it to the Finder sidebar to keep it handy).
 - Create it if needed (`mkdir -p`) and save it: `git config --global one.previewFolder "<path>"` (on Windows use the `C:/GitHub_Local` form).
 
 ## 8. Done
