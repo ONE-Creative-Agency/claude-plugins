@@ -56,7 +56,7 @@ Fill `gate` in `preview.json` from the client's own site:
 - **Fonts:** copy `use.typekit.net` / `fonts.googleapis.com` stylesheet links from `site/index.html` into `fontCss`, and the matching stacks into `fontFamily` / `headingFamily`.
 - **Message:** "This preview of the new <Client> website was prepared by <ONE Agency | Small Circle>. Enter the passcode you were sent to view it." With no credit: "This preview of the new <Client> website is private. Enter the passcode you were sent to view it."
 
-If the fonts are Adobe Fonts (`use.typekit.net`), note for the wrap-up: the kit must allow `*.web.app`, or the fonts fall back.
+If the fonts are Adobe Fonts (`use.typekit.net`), the Adobe Fonts check in step 7 tells whether they'll load on the preview.
 
 Show a four-line summary (logo, colours, fonts, message), then ask in a question box: "Looks right" / "Change something".
 
@@ -66,7 +66,7 @@ Ask in a question box with two suggested passcodes (two simple words and a numbe
 
 ## 7. Check, then staging or main
 
-1. If Node is installed, run the local check and report broken-link warnings, grouped.
+1. Run the Adobe Fonts check (commands.md). If Node is installed, run the local check and report broken-link warnings, grouped.
 2. Ask in a question box, with the explanation in the question:
    > **Staging (recommended):** a private check link just for the studio. You look it over, then publish it to the client.
    > **Main:** straight to the client link. Only for tiny fixes you're sure of.
@@ -86,5 +86,5 @@ Changes requested: make them in `site/`, commit, push staging again, and send th
 - **Staging link:** studio only, expires 30 days after the last staging push.
 - **Job folder copy:** where the published site was saved under `03_Work Files`.
 - **Project folder:** `<repo>`. "Next time, open Claude Code on this folder, make the changes, and say *send it to staging*."
-- Any notes: the Studio team couldn't be added (tell Nicky), or the Adobe Fonts domain.
+- Any notes: the Studio team couldn't be added (tell Nicky), or an Adobe Fonts kit still blocked.
 - A custom address like `client.oneagency.one` is Nicky's job.

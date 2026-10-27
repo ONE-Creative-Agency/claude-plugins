@@ -127,6 +127,31 @@ Older previews only start a deploy for changes in `site/` or `preview.json`. If 
 
 Only `tools/build.js` is refreshed this way. If the template's `.github/workflows/deploy.yml` differs from the preview's (`gh api repos/ONE-Creative-Agency/preview-template/contents/.github/workflows/deploy.yml -H "Accept: application/vnd.github.raw" | diff -q - .github/workflows/deploy.yml`), don't change it. Studio logins can't push workflow files. Tell the user to ask Nicky to update the workflow for this preview.
 
+## Adobe Fonts check (before every push to staging or main)
+
+Adobe Fonts only serves a kit's font files to the web addresses listed in that kit, so a preview can quietly fall back to another font. Check every kit the site uses, pretending to be the preview's address:
+
+```
+cd "<repo>" && for k in $(grep -rhoE 'use\.typekit\.net/[a-z0-9]+\.css' site | sort -u); do
+  font=$(curl -s --max-time 10 "https://$k" | grep -oE 'https://use\.typekit\.net/af/[^)"]+' | head -1)
+  if [ -z "$font" ]; then echo "$k unknown"; continue; fi
+  code=$(curl -s --max-time 10 -o /dev/null -w '%{http_code}' -H "Referer: https://<siteId>.web.app/" -H "Origin: https://<siteId>.web.app" "$font")
+  echo "$k $code"
+done
+```
+
+| Result | Means | Do |
+|---|---|---|
+| no output | The site uses no Adobe Fonts | Nothing |
+| `200` | Allowed | Nothing to say |
+| `403` | Blocked on the preview: it will show a fallback font | See below |
+| `unknown`, `000` or anything else | Couldn't check (offline, Adobe not answering) | One line: "I couldn't check the Adobe Fonts kit, so look at the fonts on the staging link." Carry on |
+
+**Blocked, before staging:** ask in a question box: "The <kit> Adobe Fonts kit is blocked on the preview, so pages and the passcode page will show a fallback font." Options: "Carry on to staging (Recommended)" / "Stop so I can fix it first".
+**Blocked, before publishing to the client:** ask: "The client would see a fallback font instead of the brand font." Options: "Stop, fix the fonts first (Recommended)" / "Publish anyway".
+
+Either way, give the fix: **fonts.adobe.com → Web Projects → the project using kit <kit> → Domains → add `*.web.app` → Save.** This covers every preview and staging link at once and takes a few minutes to apply. The kit belongs to whoever's Adobe account made it. If that isn't the user, they ask that person or Nicky. Never block on this check, and if what the user sees in the browser disagrees with the result, trust the browser.
+
 ## Local check before pushing (only if Node is installed)
 
 `cd "<repo>" && PREVIEW_PASSCODE=local-check-123 node tools/build.js; rm -rf public firebase.json .firebaserc`

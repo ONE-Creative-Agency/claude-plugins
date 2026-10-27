@@ -35,7 +35,7 @@ When the user just says "update the <client> preview" without saying how, ask in
 3. **First push for this preview?** If `preview.json` still has the default `gate` (empty logo, background `#14161a`) and `passcode` is true, do the branding from **preview-new** step 5. If `gh secret list --repo …` doesn't show `PREVIEW_PASSCODE`, do preview-new step 6 (needs admin).
 4. **Refresh ONE's publishing script now**, before deciding whether there's anything to publish (commands.md → Keep the publishing tools current). A script update alone is enough to publish.
 5. **Review the change:** `git status --short` and `git diff --stat`. Summarise: X pages changed, Y added, Z removed, naming the pages. Flag anything odd: a missing `site/index.html`, files changed outside `site/` other than `preview.json` and the script refresh, or lots of removals.
-6. If Node is installed, run the local check and report broken-link warnings, grouped.
+6. Run the Adobe Fonts check (commands.md). If Node is installed, run the local check and report broken-link warnings, grouped.
 7. If the user hasn't given a label, ask in a question box with suggestions (the next round number, e.g. "R18", and a description of the change), and commit: `<Client>: <label>`.
 8. `git push -u origin staging` (creates `staging` on GitHub if it isn't there yet). If no run starts within about 30 seconds, start it yourself (commands.md → Watching). Watch the run, get the staging link, and say: "Check the changed pages on this studio-only link (enter the passcode if asked). Tell me when it's good to publish to the client, or what to change."
 
@@ -45,10 +45,11 @@ When the user just says "update the <client> preview" without saying how, ask in
 
 1. `git fetch origin`, and show what will be published: `git log --oneline origin/main..origin/staging`. If it's empty, say staging already matches the client link.
 2. If there are uncommitted edits, ask whether they're meant to be in this publish. If yes, do Job A first and have them check the staging link.
-3. Confirm: "This updates the client link https://<siteId>.web.app with: <commit labels>. Go ahead?"
-4. Publish (commands.md → Publish staging to the client). If the fast-forward fails, follow the recovery note. Watch the run and give the client link.
-5. Mention that people who already entered the passcode won't be asked again.
-6. **Copy to the job folder** (Job E).
+3. Run the Adobe Fonts check (commands.md); if a kit is blocked, ask its publishing question first.
+4. Confirm: "This updates the client link https://<siteId>.web.app with: <commit labels>. Go ahead?"
+5. Publish (commands.md → Publish staging to the client). If the fast-forward fails, follow the recovery note. Watch the run and give the client link.
+6. Mention that people who already entered the passcode won't be asked again.
+7. **Copy to the job folder** (Job E).
 
 ## Job C: bring in files made elsewhere
 
