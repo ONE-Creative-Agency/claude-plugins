@@ -1,10 +1,8 @@
 # ONE Creative Agency · Claude Code plugins
 
-These plugins are added to ONE's Claude organisation (Organisation settings → Plugins, source `ONE-Creative-Agency/claude-plugins`), so everyone gets them in the Code tab automatically. Nothing to install per person.
+**Getting the plugin:** in the Code tab, type `/`. If the preview skills are there, it came with your ONE account (organisation plugins). If not, add it yourself: `/plugin` → Marketplaces → Add marketplace → `ONE-Creative-Agency/claude-plugins` → install **one-client-preview** for **User**, then start a new session. Don't do both, or you'll get two copies of every skill.
 
-**Releasing an update:** push to `main`, then click **Re-sync** on the marketplace page in Organisation settings (or let the GitHub webhook do it). People pick it up in their next new session.
-
-**Don't also add this marketplace personally** (`/plugin` → Marketplaces): you'd get two copies of every skill. If someone did, remove the personal copy with `claude plugin uninstall one-client-preview@one-agency` and `claude plugin marketplace remove one-agency`.
+**Releasing an update:** push to `main`. Then click **Re-sync** on the marketplace page in Organisation settings (or let the GitHub webhook do it). People with a personal install update with `claude plugin marketplace update one-agency` and `claude plugin update one-client-preview@one-agency`.
 
 | Plugin | What it does |
 |---|---|
