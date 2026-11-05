@@ -1,0 +1,11 @@
+{
+  "name": "threejs",
+  "version": "1.0.0",
+  "description": "Current three.js knowledge (r186, React Three Fiber 9, drei 10, gltf-transform 4): scenes, geometry, materials, lighting, textures, animation, loaders, shaders, post-processing, interaction, performance, asset pipeline. From cloudai-x/threejs-skills (MIT).",
+  "author": {
+    "name": "ONE Creative Agency"
+  },
+  "keywords": ["threejs", "three.js", "webgl", "webgpu", "3d", "react-three-fiber"],
+  "homepage": "https://github.com/cloudai-x/threejs-skills",
+  "license": "MIT"
+}

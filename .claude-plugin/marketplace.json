@@ -12,6 +12,12 @@
       "source": "./plugins/one-client-preview",
       "description": "Put client website previews online: setup, new previews, send to staging, publish to the client link, passcode pages. How-to: https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK",
       "homepage": "https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK"
+    },
+    {
+      "name": "threejs",
+      "source": "./plugins/threejs",
+      "description": "Current three.js knowledge for 3D work: scenes, materials, lighting, shaders, post-processing, React Three Fiber, glTF optimisation. From cloudai-x/threejs-skills (MIT).",
+      "homepage": "https://github.com/cloudai-x/threejs-skills"
     }
   ]
 }
