@@ -45,7 +45,7 @@ If they're not set, offer the name and email from their GitHub account (`gh api 
 
 ## 6. Organisation and Studio team
 
-- Org `active`: good. `pending`: accept the invite with the PATCH command, after telling the user. 404: stop and say: "Send Nicky your GitHub username **<login>** and ask her to invite you to ONE-Creative-Agency and the Studio team. Tell me when you've accepted the email."
+- Org `active`: good. `pending`: accept the invite with the PATCH command, after telling the user. 404: stop and say: "Send Nicky your GitHub username **<login>** and ask him to invite you to ONE-Creative-Agency and the Studio team. Tell me when you've accepted the email."
 - Studio team not active: say "Ask Nicky to add **<login>** to the Studio team. Until then you can only update previews you create yourself." Carry on; this doesn't block setup.
 
 ## 7. Preview folder

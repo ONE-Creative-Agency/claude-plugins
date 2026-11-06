@@ -54,4 +54,4 @@ Firebase project one-client-pages  (nobody logs in to Firebase)
 
 ## Who to ask
 
-Nicky (Head of Operations) owns the GitHub org, Firebase and these settings. Send people to her for: org invites, joining the Studio team, access to a preview the Studio team isn't on, passcode changes on a repo they didn't create, custom domains (e.g. `client.oneagency.one`), deleting previews.
+Nicky (Head of Operations) owns the GitHub org, Firebase and these settings. Send people to him for: org invites, joining the Studio team, access to a preview the Studio team isn't on, passcode changes on a repo they didn't create, custom domains (e.g. `client.oneagency.one`), deleting previews.
