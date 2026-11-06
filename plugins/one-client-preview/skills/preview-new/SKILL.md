@@ -1,6 +1,6 @@
 ---
 name: preview-new
-description: Start a new ONE client website preview in Claude Code. Creates the client's private GitHub repo from ONE's template and its linked folder on the user's computer, gives the Studio team access, and sets up the passcode page. Then either builds the site in that folder or brings in finished files that already exist, and publishes to staging and the client link. Use when someone says "new client preview", "start a preview for Dalton", "set up a website preview", "put this new site online", or has finished HTML for a client that has no preview yet.
+description: Start a new ONE client preview in Claude Code: a website, interactive brand guide, dashboard, 3D walkthrough or any other HTML build, online as a private link. Creates the client's private GitHub repo from ONE's template and its linked folder on the user's computer, gives the Studio team access, and sets up the passcode page. Then either builds it in that folder or brings in finished files that already exist, and publishes to staging and the client link. Use when someone says "new client preview", "start a preview for Dalton", "set up a preview", "put this new site online", "put this brand guide online", "share this dashboard with the client", "host this 3D walkthrough", or has finished HTML for a client that has no preview yet.
 ---
 
 # New client preview
@@ -16,7 +16,7 @@ Read `references/house-rules.md` and `references/commands.md` first.
 Ask one question per box, waiting for each answer (house-rules → Asking the user). Skip anything the user already said.
 
 1. **Client.** If it isn't clear from the message, offer the likely names (from their words or the folder) and let them type it.
-2. **Where does the website come from?**
+2. **Where does it come from?**
    - **Build it here:** Claude builds the pages in the new folder, from an approved design or a brief.
    - **A claude.ai artifact link:** an HTML artifact, or a Claude Design canvas. Ask for the link next.
    - **Files on this computer:** a folder or zip, e.g. from an earlier chat. Next, offer the folders you find with an `index.html` (Downloads, Desktop, Documents, the NAS job folder if they mention one), and let them paste a path. It must be the **whole site** (`index.html` plus all images, styles and scripts). If it's only changed files, stop: a new preview needs the complete site.
@@ -36,7 +36,7 @@ Say: "I'm creating a private project for <client> on GitHub, from ONE's preview 
 2. Give the Studio team Write. If that fails with 404, note it for the wrap-up and carry on.
 3. Fill in `preview.json`: `client`, `siteId`, `passcode`, `credit`. Leave `gate` for step 5.
 
-## 4. The website
+## 4. The build
 
 **Artifact link:** follow commands.md → Bringing in a claude.ai artifact.
 
@@ -54,7 +54,7 @@ Fill `gate` in `preview.json` from the client's own site:
 - **Logo:** an SVG or PNG in `site/` that works on a dark background (names with "white", "light", "reversed", "negative"). Path relative to `site/`. None: leave it empty and the client name shows instead.
 - **Colours:** the brand's dark colour from the main CSS (variables like `--navy`, `--brand`, `--primary`, or the header/footer background) for `background` and `buttonText`; `#ffffff` for `text` and `button`. Swap them if the brand is light.
 - **Fonts:** copy `use.typekit.net` / `fonts.googleapis.com` stylesheet links from `site/index.html` into `fontCss`, and the matching stacks into `fontFamily` / `headingFamily`.
-- **Message:** "This preview of the new <Client> website was prepared by <ONE Agency | Small Circle>. Enter the passcode you were sent to view it." With no credit: "This preview of the new <Client> website is private. Enter the passcode you were sent to view it."
+- **Message:** "This preview of <the client's new website / brand guide / dashboard, as fits> was prepared by <ONE Agency | Small Circle>. Enter the passcode you were sent to view it." With no credit: "This preview for <Client> is private. Enter the passcode you were sent to view it."
 
 If the fonts are Adobe Fonts (`use.typekit.net`), the Adobe Fonts check in step 7 tells whether they'll load on the preview.
 
@@ -66,7 +66,7 @@ Ask in a question box with two suggested passcodes (two simple words and a numbe
 
 ## 7. Check, then staging or main
 
-1. Run the Adobe Fonts check (commands.md). If Node is installed, run the local check and report broken-link warnings, grouped.
+1. Run the large-file check and the Adobe Fonts check (commands.md). If Node is installed, run the local check and report broken-link warnings, grouped.
 2. Ask in a question box, with the explanation in the question:
    > **Staging (recommended):** a private check link just for the studio. You look it over, then publish it to the client.
    > **Main:** straight to the client link. Only for tiny fixes you're sure of.

@@ -1,6 +1,6 @@
 ---
 name: preview-update
-description: Publish work on an existing ONE client website preview from Claude Code. Sends what changed in the client's folder to the studio-only staging link, publishes staging to the client link, brings in files made elsewhere, opens a preview's folder to work on, or changes the passcode. Use when someone says "send it to staging", "put this on staging", "let me see it online", "publish to the client", "publish staging", "update the Dalton preview", "here's R17 for Dalton", "work on the Dalton preview", or "change the passcode".
+description: Publish work on an existing ONE client preview (a website, brand guide, dashboard, 3D walkthrough or other HTML build) from Claude Code. Sends what changed in the client's folder to the studio-only staging link, publishes staging to the client link, brings in files made elsewhere, opens a preview's folder to work on, or changes the passcode. Use when someone says "send it to staging", "put this on staging", "let me see it online", "publish to the client", "publish staging", "update the Dalton preview", "here's R17 for Dalton", "work on the Dalton preview", or "change the passcode".
 ---
 
 # Send to staging, publish, and other updates
@@ -34,10 +34,11 @@ When the user just says "update the <client> preview" without saying how, ask in
    - `origin/staging` holds someone else's unpublished work: show their commit messages, and say your changes will go on top of theirs. If that's a problem, ask Nicky.
 3. **First push for this preview?** If `preview.json` still has the default `gate` (empty logo, background `#14161a`) and `passcode` is true, do the branding from **preview-new** step 5. If `gh secret list --repo …` doesn't show `PREVIEW_PASSCODE`, do preview-new step 6 (needs admin).
 4. **Refresh ONE's publishing script now**, before deciding whether there's anything to publish (commands.md → Keep the publishing tools current). A script update alone is enough to publish.
-5. **Review the change:** `git status --short` and `git diff --stat`. Summarise: X pages changed, Y added, Z removed, naming the pages. Flag anything odd: a missing `site/index.html`, files changed outside `site/` other than `preview.json` and the script refresh, or lots of removals.
-6. Run the Adobe Fonts check (commands.md). If Node is installed, run the local check and report broken-link warnings, grouped.
-7. If the user hasn't given a label, ask in a question box with suggestions (the next round number, e.g. "R18", and a description of the change), and commit: `<Client>: <label>`.
-8. `git push -u origin staging` (creates `staging` on GitHub if it isn't there yet). If no run starts within about 30 seconds, start it yourself (commands.md → Watching). Watch the run, get the staging link, and say: "Check the changed pages on this studio-only link (enter the passcode if asked). Tell me when it's good to publish to the client, or what to change."
+5. **Large files:** run the large-file check (commands.md).
+6. **Review the change:** `git status --short` and `git diff --stat`. Summarise: X pages changed, Y added, Z removed, naming the pages. Flag anything odd: a missing `site/index.html`, files changed outside `site/` other than `preview.json` and the script refresh, or lots of removals.
+7. Run the Adobe Fonts check (commands.md). If Node is installed, run the local check and report broken-link warnings, grouped.
+8. If the user hasn't given a label, ask in a question box with suggestions (the next round number, e.g. "R18", and a description of the change), and commit: `<Client>: <label>`.
+9. `git push -u origin staging` (creates `staging` on GitHub if it isn't there yet). If no run starts within about 30 seconds, start it yourself (commands.md → Watching). Watch the run, get the staging link, and say: "Check the changed pages on this studio-only link (enter the passcode if asked). Tell me when it's good to publish to the client, or what to change."
 
 **Straight to main instead?** Only if the user asks. Explain once that it skips the check link and goes directly to the client. Then confirm "This updates the client link https://<siteId>.web.app. Go ahead?", commit on main, push, watch, and give the link, then do Job E.
 
@@ -55,7 +56,7 @@ When the user just says "update the <client> preview" without saying how, ask in
 
 1. **Artifact link:** read it (commands.md → Bringing in a claude.ai artifact). A Claude Design canvas means rebuilding the changed pages to match; an HTML artifact gives files to bring in.
    **Zip or folder:** find it and its site root (where `index.html` is, or the HTML files).
-2. Ask in a question box: "Whole website" / "Only the files that changed".
+2. Ask in a question box: "The whole thing" / "Only the files that changed".
    - **Whole site:** mirror it into `site/`. Pages that aren't in the new set get removed.
    - **Changed files only:** copy over the top. Nothing is removed.
    Check the answer against the files (a whole site has `index.html` and roughly as many files as `site/` now has) and say what you see.

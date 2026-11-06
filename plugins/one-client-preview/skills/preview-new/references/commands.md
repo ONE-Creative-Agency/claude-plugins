@@ -90,8 +90,8 @@ Find where `index.html` sits; that folder is the **site root**. Copy its content
 1. Read it with the **Artifact tool** (`action: "read"`, `url`). Never use WebFetch or curl: artifacts are private and need the user's own sign-in. If there's no Artifact tool, or the read is refused (someone else's artifact not shared with the user), ask the user to share it with themselves or download the files, then use "Bringing in files that already exist".
 2. Work out what it is from the read result:
    - **An HTML page or site** (raw HTML comes back): list its files (`action: "list"`, `scope: "files"`) and read each one (`paths`). Save each file under `site/` at its own path; the page itself becomes `site/index.html`.
-   - **A Claude Design canvas** (an artifact of the "Design" type, made of artboards): it's a design, not a website. Say so in one line, then **build** the pages in `site/` to match it, reading its artboards and its design system. This is a build: check every page against the design before staging.
-   - **Another type** (Slides, Docs, Dashboard…): not a website. Say so and ask what they want online.
+   - **A Claude Design canvas** (an artifact of the "Design" type, made of artboards): it's a design, not a working page. Say so in one line, then **build** the pages in `site/` to match it, reading its artboards and its design system. This is a build: check every page against the design before staging.
+   - **Another type** (Slides, Docs, Dashboard…): it runs on Claude's own page and won't work on its own. Say so, and offer to rebuild it as a standalone page in `site/` (e.g. a dashboard with its data built in), or ask what they want online.
 3. **Images and files stored in the artifact** (references to `/_blob/<id>`, or an asset listing with `scope: "assets"`): read each by its id (`path: "<id>"`), save into `site/assets/images/` with a readable name, and rewrite every reference to the new relative path. Nothing in `site/` may point at claude.ai.
 4. **Claude-only features:** search the files for `window.claude`. Saving data, shared state, comments and "ask Claude" buttons don't work outside claude.ai. List what will stop working and ask before carrying on.
 5. Links to `cdnjs`, `jsdelivr`, `unpkg` and Google Fonts are fine and can stay.
@@ -126,6 +126,16 @@ If it changed, ask in a question box first: "ONE's publishing script for this pr
 Older previews only start a deploy for changes in `site/` or `preview.json`. If the push contains only the script refresh, start the run yourself: `gh workflow run deploy.yml --repo ONE-Creative-Agency/<name>-preview --ref <branch>`.
 
 Only `tools/build.js` is refreshed this way. If the template's `.github/workflows/deploy.yml` differs from the preview's (`gh api repos/ONE-Creative-Agency/preview-template/contents/.github/workflows/deploy.yml -H "Accept: application/vnd.github.raw" | diff -q - .github/workflows/deploy.yml`), don't change it. Studio logins can't push workflow files. Tell the user to ask Nicky to update the workflow for this preview.
+
+## Large files (before every push)
+
+GitHub refuses any single file over 100 MB, and warns over 50 MB. 3D models, video and big image sets hit this first. Check:
+
+`cd "<repo>" && find site -type f -size +50M -exec ls -lh {} \;`
+
+- **Nothing listed:** carry on.
+- **Over 50 MB:** say which files, and suggest making them smaller. 3D models: compress with `npx @gltf-transform/cli optimize in.glb out.glb --compress draco --texture-compress webp`. Videos: a web export around 1080p. Carry on if the user wants.
+- **Over 100 MB:** stop before committing. The push would fail. Make the file smaller first, or ask Nicky.
 
 ## Adobe Fonts check (before every push to staging or main)
 

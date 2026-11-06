@@ -1,6 +1,6 @@
 # ONE client preview (Claude Code plugin)
 
-Lets ONE studio staff build client websites in a linked project folder and put them online as private previews.
+Lets ONE studio staff build client work (websites, brand guides, dashboards, 3D walkthroughs) in a linked project folder and put them online as private previews.
 
 ## Skills
 - **preview-setup**: once per computer. Installs the GitHub CLI, logs in to GitHub, checks ONE-Creative-Agency and the Studio team, and sets the preview folder.

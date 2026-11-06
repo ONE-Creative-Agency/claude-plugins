@@ -8,7 +8,7 @@ Read this before running any command for a preview task.
 Claude Code session on the designer's computer
    └─ preview folder (e.g. C:\GitHub_Local)
         └─ <client>-preview/     ← one folder per client, linked to GitHub
-             site/               ← the website, built and edited here
+             site/               ← the build (website, brand guide, dashboard, 3D…), edited here
                 │  git push
                 ▼
 GitHub repo ONE-Creative-Agency/<client>-preview
@@ -20,7 +20,7 @@ Firebase project one-client-pages  (nobody logs in to Firebase)
 - Every preview is its own **private GitHub repo** in the **ONE-Creative-Agency** org, created from the template **ONE-Creative-Agency/preview-template**. The name **must end in `-preview`** (e.g. `dalton-preview`, `dalton-2710-preview`); GitHub refuses to deploy anything else.
 - The repo's folder on the designer's own drive (never the NAS or a synced folder) is **where the site gets built**. GitHub is the shared copy and keeps every version. After each publish to the client link, a dated copy of the site goes into the job's `03_Work Files` folder on the NAS, for the job record. Claude edits `site/` directly in it. There is no exporting and no zips, except when finished files already exist somewhere else and need bringing in once.
 - Inside the repo:
-  - `site/` holds the website. `site/index.html` must exist.
+  - `site/` holds the build: a website, interactive brand guide, dashboard, 3D walkthrough or any other HTML. `site/index.html` (the first page) must exist.
   - `preview.json` holds the settings: `client`, `siteId` (the Firebase site, which becomes the link), `passcode` (true/false), `credit`, and `gate` (how the passcode page looks).
   - `CLAUDE.md` and `.claude/settings.json` carry these rules into any Claude Code session opened on the folder.
   - `tools/` and `.github/` are ONE's publishing machinery. **Never edit them.**

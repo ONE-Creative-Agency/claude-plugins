@@ -1,6 +1,6 @@
 ---
 name: preview-setup
-description: First-time setup for ONE client website previews in Claude Code. Installs the GitHub CLI, logs the user in to GitHub, checks ONE-Creative-Agency org and Studio team membership, and sets the preview folder. Use when someone says "set me up for client previews", "first time setup", "I've never done a preview", or when preview-new or preview-update finds setup missing.
+description: First-time setup for ONE client previews (websites, brand guides, dashboards, 3D walkthroughs) in Claude Code. Installs the GitHub CLI, logs the user in to GitHub, checks ONE-Creative-Agency org and Studio team membership, and sets the preview folder. Use when someone says "set me up for client previews", "first time setup", "I've never done a preview", or when preview-new or preview-update finds setup missing.
 ---
 
 # Preview setup (once per computer)
@@ -32,7 +32,7 @@ Ask once in a question box, naming the tools: "Yes, install them" / "Not now". U
 
 ## 4. GitHub login
 
-Explain once: "GitHub stores each client's website and publishes it for us."
+Explain once: "GitHub stores what we build for each client and publishes it for us."
 
 1. If they have no account, send them to `https://github.com/signup` with their work email, and wait.
 2. Log in following commands.md → GitHub login. Show the code and the address in bold.

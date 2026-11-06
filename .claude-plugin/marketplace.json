@@ -10,7 +10,7 @@
     {
       "name": "one-client-preview",
       "source": "./plugins/one-client-preview",
-      "description": "Put client website previews online: setup, new previews, send to staging, publish to the client link, passcode pages. How-to: https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK",
+      "description": "Put client work online as private previews (websites, brand guides, dashboards, 3D): setup, new previews, send to staging, publish to the client link, passcode pages. How-to: https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK",
       "homepage": "https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK"
     },
     {
