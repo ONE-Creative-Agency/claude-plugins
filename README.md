@@ -2,7 +2,7 @@
 
 **Getting the plugin:** in the Code tab, type `/`. If the preview skills are there, it came with your ONE account (organisation plugins). If not, add it yourself: `/plugin` → Marketplaces → Add marketplace → `ONE-Creative-Agency/claude-plugins` → install **one-client-preview** for **User**, then start a new session. Don't do both, or you'll get two copies of every skill.
 
-**Releasing an update:** push to `main`. Then click **Re-sync** on the marketplace page in Organisation settings (or let the GitHub webhook do it). People with a personal install update with `claude plugin marketplace update one-agency` and `claude plugin update one-client-preview@one-agency`.
+**Releasing an update:** first run `claude plugin validate plugins/<plugin>` and fix any errors (a skill whose frontmatter fails to parse loads with no name or description, so Claude never uses it). Then push to `main`. Then click **Re-sync** on the marketplace page in Organisation settings (or let the GitHub webhook do it). People with a personal install update with `claude plugin marketplace update one-agency` and `claude plugin update one-client-preview@one-agency`.
 
 | Plugin | What it does |
 |---|---|
