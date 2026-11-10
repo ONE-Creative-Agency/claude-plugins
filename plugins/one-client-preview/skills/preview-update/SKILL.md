@@ -40,14 +40,14 @@ When the user just says "update the <client> preview" without saying how, ask in
 8. If the user hasn't given a label, ask in a question box with suggestions (the next round number, e.g. "R18", and a description of the change), and commit: `<Client>: <label>`.
 9. `git push -u origin staging` (creates `staging` on GitHub if it isn't there yet). If no run starts within about 30 seconds, start it yourself (commands.md → Watching). Watch the run, get the staging link, and say: "Check the changed pages on this studio-only link (enter the passcode if asked). Tell me when it's good to publish to the client, or what to change."
 
-**Straight to main instead?** Only if the user asks. Explain once that it skips the check link and goes directly to the client. Then confirm "This updates the client link https://preview.oneagency.one/<slug>/. Go ahead?", commit on main, push, watch, give the link and the Adobe Fonts reminder (commands.md), then do Job E.
+**Straight to main instead?** Only if the user asks. Explain once that it skips the check link and goes directly to the client. Then confirm "This updates the client link https://<domain>/<slug>/. Go ahead?", commit on main, push, watch, give the link and the Adobe Fonts reminder (commands.md), then do Job E.
 
 ## Job B: publish staging to the client
 
 1. `git fetch origin`, and show what will be published: `git log --oneline origin/main..origin/staging`. If it's empty, say staging already matches the client link.
 2. If there are uncommitted edits, ask whether they're meant to be in this publish. If yes, do Job A first and have them check the staging link.
 3. Run the Adobe Fonts check (commands.md); if a kit is blocked, ask its publishing question first.
-4. Confirm: "This updates the client link https://preview.oneagency.one/<slug>/ with: <commit labels>. Go ahead?"
+4. Confirm: "This updates the client link https://<domain>/<slug>/ with: <commit labels>. Go ahead?"
 5. Publish (commands.md → Publish staging to the client). If the fast-forward fails, follow the recovery note. Watch the run and give the client link.
 6. Mention that people who already entered the passcode won't be asked again.
 7. **Adobe Fonts reminder** (commands.md → Adobe Fonts reminder). Every time, if the site uses Adobe Fonts.

@@ -21,7 +21,7 @@ Ask one question per box, waiting for each answer (house-rules → Asking the us
    - **A claude.ai artifact link:** an HTML artifact, or a Claude Design canvas. Ask for the link next.
    - **Files on this computer:** a folder or zip, e.g. from an earlier chat. Next, offer the folders you find with an `index.html` (Downloads, Desktop, Documents, the NAS job folder if they mention one), and let them paste a path. It must be the **whole site** (`index.html` plus all images, styles and scripts). If it's only changed files, stop: a new preview needs the complete site.
 3. **Passcode page?** Options: "Yes, passcode page (Recommended)" / "No, open link". The question text explains: "With a passcode, people see a page in the client's branding and must enter a code first. It's light gatekeeping, not real security."
-4. **Credit line** on the passcode page: "Prepared by ONE Agency" / "Prepared by Small Circle" / "No credit".
+4. **Credit line** on the passcode page: "Prepared by ONE Agency" / "Prepared by Small Circle" / "No credit". The credit also picks the client link's domain: **Small Circle → `smallcircle.dev`**, otherwise `preview.oneagency.one`. Say which in one line.
 
 Then propose the names in one question box (options: your suggestion, and one alternative), and confirm:
 - **Repo:** `<short-client>-preview`, lowercase with hyphens. It **must end in `-preview`**. If the user suggests a name that doesn't, explain and propose one that does (e.g. `dalton-preview-27-10` → `dalton-2710-preview`).
@@ -34,7 +34,7 @@ Say: "I'm creating a private project for <client> on GitHub, from ONE's preview 
 
 1. Create it (commands.md → Repos → Create). Check `site/` arrived; if not, wait and pull.
 2. Give the Studio team Write. If that fails with 404, note it for the wrap-up and carry on.
-3. Fill in `preview.json`: `client`, `siteId`, `passcode`, `credit`. Leave `gate` for step 5.
+3. Fill in `preview.json`: `client`, `siteId`, `passcode`, `credit`, and `"domain": "smallcircle.dev"` for Small Circle work (leave `domain` out for ONE work). Leave `gate` for step 5.
 
 ## 4. The build
 
@@ -78,11 +78,11 @@ Ask in a question box with two suggested passcodes (two simple words and a numbe
 
 Changes requested: make them in `site/`, commit, push staging again, and send the new check link.
 
-**To the client link:** confirm "This puts the site on the client link https://preview.oneagency.one/<slug>/. Go ahead?", then publish staging to main (commands.md), watch, and give the client link with the Adobe Fonts reminder (commands.md → Adobe Fonts reminder). Then copy the published site to the job folder, following **preview-update** Job E. The first time, Claude asks for the job's folder on the NAS.
+**To the client link:** confirm "This puts the site on the client link https://<domain>/<slug>/. Go ahead?", then publish staging to main (commands.md), watch, and give the client link with the Adobe Fonts reminder (commands.md → Adobe Fonts reminder). Then copy the published site to the job folder, following **preview-update** Job E. The first time, Claude asks for the job's folder on the NAS.
 
 ## 9. Wrap up
 
-- **Client link:** https://preview.oneagency.one/<slug>/ (commands.md → Client link). Send it to the client, and send the passcode separately.
+- **Client link:** https://<domain>/<slug>/ (commands.md → Client link). Send it to the client, and send the passcode separately.
 - **Staging link:** studio only, expires 30 days after the last staging push.
 - **Job folder copy:** where the published site was saved under `03_Work Files`.
 - **Project folder:** `<repo>`. "Next time, open Claude Code on this folder, make the changes, and say *send it to staging*."

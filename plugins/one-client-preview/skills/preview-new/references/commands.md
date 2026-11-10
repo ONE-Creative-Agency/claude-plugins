@@ -44,10 +44,13 @@ so `git push` uses the same login.
 
 ## Client link
 
-Clients get `https://preview.oneagency.one/<slug>/` (with the trailing slash). ONE's router serves each client's Firebase site under its own path, and the address bar keeps ONE's domain.
+Clients get `https://<domain>/<slug>/` (with the trailing slash). ONE's router serves each client's Firebase site under its own path, and the address bar keeps that domain.
+
+- `<domain>`: `"domain"` in `preview.json`. `smallcircle.dev` for Small Circle work; left out (or `preview.oneagency.one`) for ONE work. smallcircle.dev only shows previews marked for it, so a Small Circle preview needs `"domain": "smallcircle.dev"` **and** a publish before its smallcircle.dev link works. preview.oneagency.one shows every preview.
+- **Moving an existing preview to smallcircle.dev:** add `"domain": "smallcircle.dev"` to `preview.json`, send it to staging, then publish to the client link (Job B). From then on give the smallcircle.dev link; the old preview.oneagency.one link keeps working.
 
 - `<slug>`: if the siteId is `one-<x>-preview`, the slug is `<x>` (`one-dalton-2710-preview` → `dalton-2710`). Otherwise the slug is the whole siteId (`cch-dashboard-expanded`).
-- Check it answers: `curl -s -o /dev/null -w '%{http_code}' https://preview.oneagency.one/<slug>/` (`200` = good). A brand-new site can take a minute to appear. If it still fails, give the `https://<siteId>.web.app` link and tell the user to let Nicky know.
+- Check it answers: `curl -s -o /dev/null -w '%{http_code}' https://<domain>/<slug>/` (`200` = good). A brand-new site can take a minute to appear. If it still fails, give the `https://<siteId>.web.app` link and tell the user to let Nicky know.
 - Staging links stay on `web.app` and are studio-only.
 - **Paths inside the site must be relative** (`assets/logo.png`, `about.html`), not starting with `/`. The router catches most `/…` paths, but relative is what to write. Check before pushing: `cd "<repo>" && grep -rnoE '(src|href|action)="/[^/"][^"]*"' site --include=*.html | head -20`. If anything is listed, change it to a relative path, or tell the user and carry on.
 - Files over 25 MB (3D models, video) load straight from `web.app`. That's expected and invisible to the client.
@@ -60,9 +63,9 @@ Every time something is published to the client link, find the Adobe Fonts kits 
 
 - **No output:** the site uses no Adobe Fonts. Say nothing.
 - **Kits listed:** always end the publish message with this reminder, even if the Adobe Fonts check passed, naming each kit:
-  > **Adobe Fonts:** make sure `preview.oneagency.one` is in the domains of the web project for kit <kit> (fonts.adobe.com → Web Projects → the project → Domains → add `preview.oneagency.one` and `*.web.app` → Save). Without it, the client sees a fallback font instead of the brand font. It takes a few minutes to apply.
+  > **Adobe Fonts:** make sure `<domain>` is in the domains of the web project for kit <kit> (fonts.adobe.com → Web Projects → the project → Domains → add `<domain>` and `*.web.app` → Save). Without it, the client sees a fallback font instead of the brand font. It takes a few minutes to apply.
 
-  If the Adobe Fonts check showed `preview.oneagency.one … 200` for every kit, add "It looks set up already, so this is just a check." If the kit belongs to someone else's Adobe account, they ask that person or Nicky.
+  If the Adobe Fonts check showed `<domain> … 200` for every kit, add "It looks set up already, so this is just a check." If the kit belongs to someone else's Adobe account, they ask that person or Nicky.
 
 ## Repos
 
@@ -164,7 +167,7 @@ GitHub refuses any single file over 100 MB, and warns over 50 MB. 3D models, vid
 Adobe Fonts only serves a kit's font files to the web addresses listed in that kit, so a preview can quietly fall back to another font. Check every kit the site uses, pretending to be the preview's address:
 
 ```
-cd "<repo>" && for host in <siteId>.web.app preview.oneagency.one; do for k in $(grep -rhoE 'use\.typekit\.net/[a-z0-9]+\.css' site | sort -u); do
+cd "<repo>" && for host in <siteId>.web.app <domain>; do for k in $(grep -rhoE 'use\.typekit\.net/[a-z0-9]+\.css' site | sort -u); do
   font=$(curl -s --max-time 10 "https://$k" | grep -oE 'https://use\.typekit\.net/af/[^)"]+' | head -1)
   if [ -z "$font" ]; then echo "$k unknown"; continue; fi
   code=$(curl -s --max-time 10 -o /dev/null -w '%{http_code}' -H "Referer: https://$host/" -H "Origin: https://$host" "$font")
@@ -182,7 +185,7 @@ done; done
 **Blocked, before staging:** ask in a question box: "The <kit> Adobe Fonts kit is blocked on the preview, so pages and the passcode page will show a fallback font." Options: "Carry on to staging (Recommended)" / "Stop so I can fix it first".
 **Blocked, before publishing to the client:** ask: "The client would see a fallback font instead of the brand font." Options: "Stop, fix the fonts first (Recommended)" / "Publish anyway".
 
-Either way, give the fix: **fonts.adobe.com → Web Projects → the project using kit <kit> → Domains → add `*.web.app` and `preview.oneagency.one` → Save.** This covers every client, preview and staging link at once and takes a few minutes to apply. The kit belongs to whoever's Adobe account made it. If that isn't the user, they ask that person or Nicky. Never block on this check, and if what the user sees in the browser disagrees with the result, trust the browser.
+Either way, give the fix: **fonts.adobe.com → Web Projects → the project using kit <kit> → Domains → add `*.web.app` and `<domain>` → Save.** This covers every client, preview and staging link at once and takes a few minutes to apply. The kit belongs to whoever's Adobe account made it. If that isn't the user, they ask that person or Nicky. Never block on this check, and if what the user sees in the browser disagrees with the result, trust the browser.
 
 ## Local check before pushing (only if Node is installed)
 

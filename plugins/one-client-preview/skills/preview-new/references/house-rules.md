@@ -27,14 +27,14 @@ Firebase project one-client-pages  (nobody logs in to Firebase)
   - `public/`, `firebase.json` and `.firebaserc` are generated on GitHub. Never commit them; `.gitignore` already excludes them.
 - **Two branches, two links:**
   - **`staging`** gives the studio check link, `https://<siteId>--staging-<code>.web.app`. It expires 30 days after the last push to staging. **Never give it to the client.**
-  - **`main`** gives the **client link**, `https://preview.oneagency.one/<slug>/` (commands.md → Client link). Pushing to main changes what the client sees. The same site also answers at `https://<siteId>.web.app`, but always give clients the preview.oneagency.one link.
+  - **`main`** gives the **client link**, `https://<domain>/<slug>/` (commands.md → Client link). Pushing to main changes what the client sees. The same site also answers at `https://<siteId>.web.app`, but always give clients the `<domain>` link: `smallcircle.dev` when `preview.json` has `"domain": "smallcircle.dev"` (Small Circle work), otherwise `preview.oneagency.one`.
 - **Passcode:** it is stored only in the repo secret `PREVIEW_PASSCODE`. Never write it into any file, commit message or `preview.json`. If `passcode` is true and the secret is missing, GitHub stops instead of publishing the site unlocked. Updates with the same passcode don't make visitors re-enter it; a new passcode does.
 - **Access:** studio staff are in the GitHub team **Studio**, which gets Write on every preview repo. The creator of a repo is its admin, and only admins can set the passcode.
 
 ## House rules (non-negotiable)
 
 1. **Run commands with Claude Code's own Bash tool** on the user's computer. On Windows this is Git Bash, so use the bash commands in `commands.md`; switch to PowerShell only where it says so.
-2. **Confirm before anything the client will see**, which means any push to `main`. Say plainly "This updates the client link `https://preview.oneagency.one/<slug>/`" and wait for a clear yes in the chat.
+2. **Confirm before anything the client will see**, which means any push to `main`. Say plainly "This updates the client link `https://<domain>/<slug>/`" and wait for a clear yes in the chat.
 3. **Never** force-push, reset hard, delete a repo, delete a branch on GitHub, delete a Firebase site, or change repo settings other than setting the `PREVIEW_PASSCODE` secret and adding the Studio team to a new preview. If one of these is needed, tell the user to ask Nicky.
 4. **Never run Firebase commands locally.** Publishing happens only on GitHub.
 5. **Only touch repos in ONE-Creative-Agency whose name ends in `-preview`.** Never edit `tools/` or `.github/` in them, except for refreshing `tools/build.js` from the template (commands.md → Keep the publishing tools current).
