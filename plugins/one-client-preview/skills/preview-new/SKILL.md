@@ -78,11 +78,11 @@ Ask in a question box with two suggested passcodes (two simple words and a numbe
 
 Changes requested: make them in `site/`, commit, push staging again, and send the new check link.
 
-**To the client link:** confirm "This puts the site on the client link https://<siteId>.web.app. Go ahead?", then publish staging to main (commands.md), watch, and give the client link. Then copy the published site to the job folder, following **preview-update** Job E. The first time, Claude asks for the job's folder on the NAS.
+**To the client link:** confirm "This puts the site on the client link https://preview.oneagency.one/<slug>/. Go ahead?", then publish staging to main (commands.md), watch, and give the client link with the Adobe Fonts reminder (commands.md → Adobe Fonts reminder). Then copy the published site to the job folder, following **preview-update** Job E. The first time, Claude asks for the job's folder on the NAS.
 
 ## 9. Wrap up
 
-- **Client link:** https://<siteId>.web.app. Send it to the client, and send the passcode separately.
+- **Client link:** https://preview.oneagency.one/<slug>/ (commands.md → Client link). Send it to the client, and send the passcode separately.
 - **Staging link:** studio only, expires 30 days after the last staging push.
 - **Job folder copy:** where the published site was saved under `03_Work Files`.
 - **Project folder:** `<repo>`. "Next time, open Claude Code on this folder, make the changes, and say *send it to staging*."

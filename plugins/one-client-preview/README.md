@@ -13,7 +13,7 @@ Lets ONE studio staff build client work (websites, brand guides, dashboards, 3D 
 
 ## Links
 - `staging` → studio-only check link `https://<siteId>--staging-<code>.web.app` (expires 30 days after the last push)
-- `main` → client link `https://<siteId>.web.app`; each publish also saves a dated copy to the job folder on the NAS (`03_Work Files/Website preview/`)
+- `main` → client link `https://preview.oneagency.one/<slug>/` (served by the `one-preview-router` site; also at `https://<siteId>.web.app`); each publish also saves a dated copy to the job folder on the NAS (`03_Work Files/Website preview/`)
 
 Publishing runs on GitHub Actions with a keyless login to the Firebase project `one-client-pages`. Studio how-to: https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK
 

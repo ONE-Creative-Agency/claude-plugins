@@ -27,21 +27,22 @@ Firebase project one-client-pages  (nobody logs in to Firebase)
   - `public/`, `firebase.json` and `.firebaserc` are generated on GitHub. Never commit them; `.gitignore` already excludes them.
 - **Two branches, two links:**
   - **`staging`** gives the studio check link, `https://<siteId>--staging-<code>.web.app`. It expires 30 days after the last push to staging. **Never give it to the client.**
-  - **`main`** gives the **client link**, `https://<siteId>.web.app`. Pushing to main changes what the client sees.
+  - **`main`** gives the **client link**, `https://preview.oneagency.one/<slug>/` (commands.md → Client link). Pushing to main changes what the client sees. The same site also answers at `https://<siteId>.web.app`, but always give clients the preview.oneagency.one link.
 - **Passcode:** it is stored only in the repo secret `PREVIEW_PASSCODE`. Never write it into any file, commit message or `preview.json`. If `passcode` is true and the secret is missing, GitHub stops instead of publishing the site unlocked. Updates with the same passcode don't make visitors re-enter it; a new passcode does.
 - **Access:** studio staff are in the GitHub team **Studio**, which gets Write on every preview repo. The creator of a repo is its admin, and only admins can set the passcode.
 
 ## House rules (non-negotiable)
 
 1. **Run commands with Claude Code's own Bash tool** on the user's computer. On Windows this is Git Bash, so use the bash commands in `commands.md`; switch to PowerShell only where it says so.
-2. **Confirm before anything the client will see**, which means any push to `main`. Say plainly "This updates the client link `https://….web.app`" and wait for a clear yes in the chat.
+2. **Confirm before anything the client will see**, which means any push to `main`. Say plainly "This updates the client link `https://preview.oneagency.one/<slug>/`" and wait for a clear yes in the chat.
 3. **Never** force-push, reset hard, delete a repo, delete a branch on GitHub, delete a Firebase site, or change repo settings other than setting the `PREVIEW_PASSCODE` secret and adding the Studio team to a new preview. If one of these is needed, tell the user to ask Nicky.
 4. **Never run Firebase commands locally.** Publishing happens only on GitHub.
 5. **Only touch repos in ONE-Creative-Agency whose name ends in `-preview`.** Never edit `tools/` or `.github/` in them, except for refreshing `tools/build.js` from the template (commands.md → Keep the publishing tools current).
 6. Keep command output out of the chat. Summarise it in a line.
 7. When something fails, quote the one line of the error that matters, say what it means in plain words, and say who fixes it (the user, or Nicky). Don't retry the same failing command more than once.
 8. **Job folders on the NAS are read-only except for one thing:** after a publish to the client link, add a new dated copy of the site under `03_Work Files/Website preview/`. Never delete, move or overwrite anything there. Never put the project folder itself on the NAS or in a synced folder.
-9. Explain in plain language. The person is a designer, not a developer. Introduce each technical word once ("a branch is a separate line of work in the repo").
+9. **After every publish to the client link, give the Adobe Fonts reminder** if the site uses Adobe Fonts (commands.md → Adobe Fonts reminder). Never skip it, even when the check passed.
+10. Explain in plain language. The person is a designer, not a developer. Introduce each technical word once ("a branch is a separate line of work in the repo").
 
 ## Asking the user
 
