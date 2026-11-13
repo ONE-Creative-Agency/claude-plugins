@@ -46,8 +46,8 @@ so `git push` uses the same login.
 
 Clients get `https://<domain>/<slug>/` (with the trailing slash). ONE's router serves each client's Firebase site under its own path, and the address bar keeps that domain.
 
-- `<domain>`: `"domain"` in `preview.json`. `smallcircle.dev` for Small Circle work; left out (or `preview.oneagency.one`) for ONE work. smallcircle.dev only shows previews marked for it, so a Small Circle preview needs `"domain": "smallcircle.dev"` **and** a publish before its smallcircle.dev link works. preview.oneagency.one shows every preview.
-- **Moving an existing preview to smallcircle.dev:** add `"domain": "smallcircle.dev"` to `preview.json`, send it to staging, then publish to the client link (Job B). From then on give the smallcircle.dev link; the old preview.oneagency.one link keeps working.
+- `<domain>`: `"domain"` in `preview.json`. `solo.smallcircle.dev` for Small Circle work; left out (or `preview.oneagency.one`) for ONE work. solo.smallcircle.dev only shows previews marked for it, so a Small Circle preview needs `"domain": "solo.smallcircle.dev"` **and** a publish before its solo.smallcircle.dev link works. preview.oneagency.one shows every preview.
+- **Moving an existing preview to solo.smallcircle.dev:** add `"domain": "solo.smallcircle.dev"` to `preview.json`, send it to staging, then publish to the client link (Job B). From then on give the solo.smallcircle.dev link; the old preview.oneagency.one link keeps working.
 
 - `<slug>`: if the siteId is `one-<x>-preview`, the slug is `<x>` (`one-dalton-2710-preview` → `dalton-2710`). Otherwise the slug is the whole siteId (`cch-dashboard-expanded`).
 - Check it answers: `curl -s -o /dev/null -w '%{http_code}' https://<domain>/<slug>/` (`200` = good). A brand-new site can take a minute to appear. If it still fails, give the `https://<siteId>.web.app` link and tell the user to let Nicky know.

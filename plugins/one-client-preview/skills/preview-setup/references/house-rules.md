@@ -27,7 +27,7 @@ Firebase project one-client-pages  (nobody logs in to Firebase)
   - `public/`, `firebase.json` and `.firebaserc` are generated on GitHub. Never commit them; `.gitignore` already excludes them.
 - **Two branches, two links:**
   - **`staging`** gives the studio check link, `https://<siteId>--staging-<code>.web.app`. It expires 30 days after the last push to staging. **Never give it to the client.**
-  - **`main`** gives the **client link**, `https://<domain>/<slug>/` (commands.md → Client link). Pushing to main changes what the client sees. The same site also answers at `https://<siteId>.web.app`, but always give clients the `<domain>` link: `smallcircle.dev` when `preview.json` has `"domain": "smallcircle.dev"` (Small Circle work), otherwise `preview.oneagency.one`.
+  - **`main`** gives the **client link**, `https://<domain>/<slug>/` (commands.md → Client link). Pushing to main changes what the client sees. The same site also answers at `https://<siteId>.web.app`, but always give clients the `<domain>` link: `solo.smallcircle.dev` when `preview.json` has `"domain": "solo.smallcircle.dev"` (Small Circle work), otherwise `preview.oneagency.one`.
 - **Passcode:** it is stored only in the repo secret `PREVIEW_PASSCODE`. Never write it into any file, commit message or `preview.json`. If `passcode` is true and the secret is missing, GitHub stops instead of publishing the site unlocked. Updates with the same passcode don't make visitors re-enter it; a new passcode does.
 - **Access:** studio staff are in the GitHub team **Studio**, which gets Write on every preview repo. The creator of a repo is its admin, and only admins can set the passcode.
 
