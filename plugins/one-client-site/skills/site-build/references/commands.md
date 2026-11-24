@@ -38,6 +38,15 @@ A fresh template clone can be empty for a few seconds while GitHub copies the te
 
 Stop background servers when done.
 
+## Shared files (before every push)
+
+`cd "<repo>" && node .one/refresh.mjs`
+
+- "Shared files are up to date": carry on.
+- "Refreshed from …" with a list: ONE's fixes came in. Build locally (`npm run build`) to check nothing broke, then commit them on their own: `git add -A && git commit -m "Refresh ONE's shared files (template <short sha>)"`. Mention it in one line ("ONE's latest fixes to the shared files came in: <files>"). If the build breaks, stop and tell Nicky with the error line; don't push.
+- "Couldn't refresh": usually not logged in to GitHub or no access to `site-template` (Studio team). Say so and carry on with the push; mention it in the wrap-up.
+- A site made before shared files existed has no `.one/` folder: tell Nicky it needs bringing in line with the template once (Nicky's call, not part of a normal publish).
+
 ## Publishing
 
 | What | Command |

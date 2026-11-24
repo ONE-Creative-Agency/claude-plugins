@@ -35,7 +35,8 @@ Say: "I'm creating a private project for <client> on GitHub, from ONE's site tem
 2. Fill in `site.config.js`: `name` (client name per language; ask for the native spelling if it differs, e.g. Arabic), `worker` (the repo name), `sanity.projectId`, `languages` (uncomment or add entries; the first is the default and has no URL prefix).
 3. Set the same worker name in `wrangler.jsonc`: `"name": "<repo>"` and the staging env `"name": "<repo>-staging"`.
 4. Create and publish the starter content from `sanity/starter-content.ndjson`, replacing "Client name" and "Client" with the client's name. For each extra language, copy every document with `-<lang>` ids and `"language": "<lang>"` (keep the English words for now; site-build translates), and create the `translation-metadata-page-<name>` links.
-5. Build locally (`npm run build`). It must finish with the home and contact pages listed. Fix anything it reports.
+5. Run the shared-files refresh once (commands.md → Shared files). It records the template version in `.one/template-version`.
+6. Build locally (`npm run build`). It must finish with the home and contact pages listed. Fix anything it reports.
 
 ## 5. Nicky's handover
 

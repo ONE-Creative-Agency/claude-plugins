@@ -50,7 +50,7 @@ The deploy creates the DNS records. Ask Nicky for a redirect rule from the addre
 
 ## 6. Go live
 
-1. Send the launch changes to staging and test the contact form there end to end: a real message must arrive at the recipient (ask the user to check the inbox).
+1. Refresh ONE's shared files (commands.md → Shared files), send the launch changes to staging and test the contact form there end to end: a real message must arrive at the recipient (ask the user to check the inbox).
 2. Ask in a question box: "This publishes the site at `https://<domain>` for everyone. Go ahead?" — "Yes, go live" / "Not yet".
 3. Publish staging to main (commands.md), watch the run, then check `https://<domain>`, `www.`, a missing page (404), `/sitemap-index.xml`, `/robots.txt` (must allow crawling) and the form.
 4. Tell Nicky to switch the Sanity webhook to `main` now. From here on, **publishing in Sanity changes the live site.**

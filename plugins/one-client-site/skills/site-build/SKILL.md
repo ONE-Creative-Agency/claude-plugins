@@ -40,6 +40,8 @@ For each new section type, in one go:
 
 Fixed interface words go in `src/i18n/ui.js` for every language.
 
+Don't change ONE's shared files (`.one/shared-files.json`). The layout, header, footer, sections, `Contact.astro` markup and CSS are the client's to change; the search tags (`src/one/SeoHead.astro`), analytics, the form's sending script and the Worker are shared. If the design needs something the shared files can't do, tell the user it's a template change for Nicky, and work around it in the client's own files meanwhile.
+
 ## 5. Move the content into Sanity
 
 For each page, create `page-<name>-<lang>` for the default language with its sections in order and the design's real words, then publish (commands.md → Sanity). Upload photos with alt text (describe the photo; ask if unsure). Fill Site settings and Menu. Use the design's page addresses as slugs; if they change from the preview, add redirects in `astro.config.mjs`.
@@ -60,7 +62,7 @@ For each extra language: draft the translation (keep brand names as the client w
 
 ## 8. Send to staging
 
-Run the large-file check, commit (one commit per part, saying what it added), push to `staging`, watch, and give the check link. Say: "Check every page on desktop and phone, and try editing a few words at /admin: publishing there rebuilds the check link in about two minutes."
+Refresh ONE's shared files (commands.md → Shared files), run the large-file check, commit (one commit per part, saying what it added), push to `staging`, watch, and give the check link. Say: "Check every page on desktop and phone, and try editing a few words at /admin: publishing there rebuilds the check link in about two minutes."
 
 ## 9. Wrap up
 

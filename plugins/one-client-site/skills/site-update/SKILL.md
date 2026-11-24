@@ -35,11 +35,14 @@ A new page made from existing sections is content too: create `page-<name>-<lang
 
 1. Work on the `staging` branch (`git checkout staging && git pull --ff-only`). If `main` has commits staging doesn't, merge main into staging first.
 2. Make the change following site-build's rules (sections as component + schema + query; client copy in Sanity; logical CSS properties).
-3. Build locally and check the pages it touches, at desktop and phone widths.
-4. Push to staging, watch, give the check link: "Check it and tell me when it's good to go live, or what to change."
-5. **To the live site:** ask "This updates the live site `<address>`. Go ahead?" — "Yes, update the live site" / "Not yet". Then publish staging to main (commands.md), watch, and check the live pages.
+3. Refresh ONE's shared files (commands.md → Shared files).
+4. Build locally and check the pages it touches, at desktop and phone widths.
+5. Push to staging, watch, give the check link: "Check it and tell me when it's good to go live, or what to change."
+6. **To the live site:** ask "This updates the live site `<address>`. Go ahead?" — "Yes, update the live site" / "Not yet". Then publish staging to main (commands.md), watch, and check the live pages.
 
 New Sanity fields deploy with the code. Content in new fields must be filled and published after the code is live, or the section shows empty: plan that order with the user.
+
+**Only ONE's fixes to bring in** (Nicky says a template fix should reach the sites): refresh, build, push to staging, check, then live after a yes, as above. No other change needed.
 
 ## Job C: settings
 

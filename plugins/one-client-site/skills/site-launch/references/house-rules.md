@@ -25,7 +25,8 @@ Sanity (the editor at /admin) ── publish ──► webhook ──► GitHub 
   - `src/components/sections/` + `src/sanity/schemaTypes/sections.js`: page sections. Each is a component plus a Sanity block.
   - `src/components/coded/`: one-off layouts kept in code.
   - `public/css/`, `public/js/`: the client's styles and scripts.
-  - `worker/index.js`: the contact form endpoint. `wrangler.jsonc` and `.github/`: publishing machinery.
+  - `worker/index.js`: the contact form endpoint. `wrangler.jsonc`: Cloudflare settings (the domain at launch).
+  - **ONE's shared files**, listed in `.one/shared-files.json`: the publishing workflow, the contact form Worker and script, `src/one/` (search tags, analytics, build settings), a few Sanity helpers, `CLAUDE.md` and `.claude/settings.json`. They are the same on every site and are refreshed from the template before each publish (`node .one/refresh.mjs`), so ONE's fixes reach every site.
   - `CLAUDE.md` and `.claude/settings.json` carry these rules into any session opened on the folder.
 - **Two branches, two addresses:**
   - **`staging`** → `https://<repo>-staging.one-agency.workers.dev`: the studio check link, hidden from search engines. Sanity publishes rebuild staging until launch.
@@ -43,8 +44,10 @@ Sanity (the editor at /admin) ── publish ──► webhook ──► GitHub 
 6. **Only touch repos in ONE-Creative-Agency whose name ends in `-site`**, and Sanity projects that belong to them (the ID in their `site.config.js`).
 7. Keep command output out of the chat. Summarise it in a line.
 8. When something fails, quote the one line of the error that matters, say what it means in plain words, and who fixes it (the user, or Nicky). Don't retry the same failing command more than once.
-9. **Client copy belongs in Sanity**, never hard-coded in components. Fixed interface words (form labels, 404) go in `src/i18n/ui.js`.
-10. Explain in plain language. The person is a designer, not a developer. Introduce each technical word once.
+9. **Never edit ONE's shared files in a client repo** (`.one/shared-files.json` lists them; Claude Code blocks it anyway). The next refresh overwrites any change. A fix every site needs goes into `ONE-Creative-Agency/site-template` (tell Nicky); a client who needs something different gets it in a file of their own.
+10. **Before every push, refresh the shared files** (commands.md → Shared files) and commit what changed as its own commit.
+11. **Client copy belongs in Sanity**, never hard-coded in components. Fixed interface words (form labels, 404) go in `src/i18n/ui.js`.
+12. Explain in plain language. The person is a designer, not a developer. Introduce each technical word once.
 
 ## Asking the user
 
