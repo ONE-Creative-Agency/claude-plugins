@@ -14,6 +14,11 @@
       "homepage": "https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK"
     },
     {
+      "name": "one-client-site",
+      "source": "./plugins/one-client-site",
+      "description": "Build and run ONE client production websites (Astro + Sanity + Cloudflare): new site, build from the approved design, launch on the client's domain, updates after launch."
+    },
+    {
       "name": "threejs",
       "source": "./plugins/threejs",
       "description": "Current three.js knowledge for 3D work: scenes, materials, lighting, shaders, post-processing, React Three Fiber, glTF optimisation. From cloudai-x/threejs-skills (MIT).",

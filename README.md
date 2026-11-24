@@ -7,6 +7,7 @@
 | Plugin | What it does |
 |---|---|
 | `one-client-preview` | Client previews (websites, brand guides, dashboards, 3D walkthroughs): first-time setup, new preview, send to staging, publish to the client link, passcode page. |
+| `one-client-site` | Client production websites (Astro + Sanity + Cloudflare): new site from `ONE-Creative-Agency/site-template`, build from the design, launch, updates. |
 | `threejs` | Current three.js knowledge for 3D work (r186, React Three Fiber, glTF optimisation). Copied from cloudai-x/threejs-skills, MIT. |
 
 Studio how-to: https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK
