@@ -10,7 +10,8 @@ Takes an approved client design to a live production website, and keeps it runni
 
 ## Needs
 - Claude Code with the GitHub CLI logged in to **ONE-Creative-Agency** (the one-client-preview plugin's preview-setup does this), and Node 22+.
-- The Sanity connector, authorised for ONE's Sanity organisation (or Nicky does the Sanity steps).
+- The Sanity connector, authorised for ONE's Sanity organisation (or Nicky does the Sanity steps), and a Sanity login on the computer (`npx sanity login`, once) for the rebuild webhook.
+- ONE's rebuild relay (`ONE-Creative-Agency/one-rebuild-relay`), set up once by Nicky.
 
 ## Addresses
 - `staging` → `https://<repo>-staging.one-agency.workers.dev` (studio check link, never indexed)

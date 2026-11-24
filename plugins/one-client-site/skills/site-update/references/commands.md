@@ -97,11 +97,18 @@ Use the Sanity connector's tools (`create_project`, `list_datasets`, `create_dat
 
 Document ids: `siteSettings-<lang>`, `navigation-<lang>`, `page-<name>-<lang>`. Every array item needs a unique `_key`. Publish after creating or patching (drafts don't reach the site).
 
-**Rebuild on publish (Nicky).** In sanity.io/manage → the project → API → Webhooks → Create:
-- Name `Rebuild site`; URL `https://api.github.com/repos/ONE-Creative-Agency/<repo>/actions/workflows/deploy.yml/dispatches`; dataset `production`; trigger on create, update, delete.
-- Filter `_type != "formSubmission"` (form messages must not rebuild the site).
-- Projection `{"ref": "staging"}` (changed to `"main"` at launch).
-- Method POST; headers `Accept: application/vnd.github+json` and `Authorization: Bearer <a fine-grained GitHub token with Actions: read and write on this repo only>`.
+**Rebuild on publish.** Every site's Sanity project has one webhook, "Rebuild site", that calls ONE's rebuild relay (`https://one-rebuild-relay.one-agency.workers.dev/sanity/<repo>`). The relay runs the repo's deploy on the branch in `site.config.js` → `rebuildBranch` (`'staging'` until launch, `'main'` after). The webhook holds no key.
+
+| What | Command |
+|---|---|
+| Sanity login on this computer (once; opens the browser) | `cd "<repo>" && npx sanity login` |
+| Create or fix the webhook | `cd "<repo>" && node .one/sanity-webhook.mjs` |
+| Check it | `cd "<repo>" && node .one/sanity-webhook.mjs --check` (✓ = set up correctly) |
+
+- "Not logged in to Sanity": run the login (the user picks the same account they use for Sanity, in the browser), then try again.
+- "can't manage webhooks": the user isn't an Administrator of that Sanity project; Nicky adds them.
+- The relay can only rebuild a branch that exists: before the first push to `staging`, a publish does nothing (harmless).
+- An older site whose webhook still calls GitHub with a token: running the script points it at the relay and removes the token. Tell Nicky the old token can then be revoked.
 
 ## Large files
 
