@@ -15,7 +15,7 @@ GitHub repo ONE-Creative-Agency/<client>-site
              ▼
 Cloudflare Workers on ONE's account (nobody logs in to Cloudflare)
              ▲
-Sanity (the editor at /admin) ── publish ──► webhook ──► GitHub rebuild
+Sanity (the editor at /admin) ── publish ──► ONE rebuild relay ──► GitHub rebuild
 ```
 
 - Every client site is its own **private GitHub repo** in **ONE-Creative-Agency**, made from **ONE-Creative-Agency/site-template**. The name **must end in `-site`** (e.g. `dalton-site`). It is separate from the client's `<client>-preview` repo, which stays for design previews.
@@ -60,4 +60,4 @@ Sanity (the editor at /admin) ── publish ──► webhook ──► GitHub 
 
 ## Who to ask
 
-Nicky (Head of Operations) owns the GitHub org, ONE's Cloudflare and Sanity accounts, and these settings. Hand over to Nicky for: Cloudflare secrets on a new repo, the Sanity rebuild webhook, the client's Sanity login, domains and DNS, Turnstile keys, email sending, analytics, org invites and Studio team membership, and deleting anything. Write the handover as a short checklist the user can forward.
+Nicky (Head of Operations) owns the GitHub org, ONE's Cloudflare and Sanity accounts, and these settings. Hand over to Nicky for: Cloudflare secrets on a new repo, Sanity project admin rights, the client's Sanity login, the rebuild relay, domains and DNS, Turnstile keys, email sending, analytics, org invites and Studio team membership, and deleting anything. Write the handover as a short checklist the user can forward.

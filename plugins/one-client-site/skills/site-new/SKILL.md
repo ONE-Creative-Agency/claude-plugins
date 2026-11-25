@@ -36,7 +36,8 @@ Say: "I'm creating a private project for <client> on GitHub, from ONE's site tem
 3. Set the same worker name in `wrangler.jsonc`: `"name": "<repo>"` and the staging env `"name": "<repo>-staging"`.
 4. Create and publish the starter content from `sanity/starter-content.ndjson`, replacing "Client name" and "Client" with the client's name. For each extra language, copy every document with `-<lang>` ids and `"language": "<lang>"` (keep the English words for now; site-build translates), and create the `translation-metadata-page-<name>` links.
 5. Run the shared-files refresh once (commands.md → Shared files). It records the template version in `.one/template-version`.
-6. Build locally (`npm run build`). It must finish with the home and contact pages listed. Fix anything it reports.
+6. Set up rebuild on publish: `node .one/sanity-webhook.mjs` (commands.md → Rebuild on publish; the first time on this computer, the user logs in to Sanity in the browser).
+7. Build locally (`npm run build`). It must finish with the home and contact pages listed. Fix anything it reports.
 
 ## 5. Nicky's handover
 
@@ -44,9 +45,8 @@ Write this checklist for the user to forward (fill in the names; no keys in it):
 
 > **New client site: <Client>** (`ONE-Creative-Agency/<repo>`, Sanity project `<projectId>`)
 > 1. GitHub repo secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` (Settings → Secrets and variables → Actions).
-> 2. Sanity webhook "Rebuild site" pointing at this repo, ref `staging` (details: one-client-site → commands.md → Rebuild on publish).
-> 3. Sanity: invite the client's shared login as Editor, and add the studio designers who need it.
-> 4. (Only if it failed) Add the Studio team to the repo.
+> 2. Sanity: invite the client's shared login as Editor, and add the studio designers who need it.
+> 3. (Only if it failed) Add the Studio team to the repo, or set up the Sanity rebuild webhook.
 
 Say the first deploy can't go out until step 1 is done.
 
@@ -55,7 +55,7 @@ Say the first deploy can't go out until step 1 is done.
 Commit ("<Client>: new site from ONE's template") on a new `staging` branch and push (commands.md → Publishing). Watch the run.
 
 - **Secrets missing:** the run stops at Deploy with the missing-secrets message. That's expected until Nicky does step 1. Tell the user to say **send it to staging** once Nicky confirms.
-- **Success:** get the address, open it in the browser pane, and check the home page, the contact page and `/admin` load.
+- **Success:** get the address, open it in the browser pane, and check the home page, the contact page and `/admin` load. Then test rebuild on publish: change a word on the home page in Sanity, publish, and check a new run starts within a minute (`gh run list --branch staging --limit 1`); change it back.
 
 ## 7. Wrap up
 

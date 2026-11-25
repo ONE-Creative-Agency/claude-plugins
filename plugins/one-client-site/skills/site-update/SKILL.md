@@ -53,7 +53,7 @@ Non-secret settings (commands.md → GitHub settings): show the current value, a
 1. `gh run list --limit 5` on the branch. A failed run: read `gh run view <id> --log-failed`, quote the one line that matters, and say who fixes it.
    - Build error after a Sanity publish: usually content the code doesn't expect (an empty required field, a new section type the code doesn't know yet). Find the document and fix the content, or fix the code via Job B.
    - Missing Cloudflare secrets or an expired token: Nicky.
-2. No run at all after a Sanity publish: the webhook (wrong ref, expired token). Nicky checks Sanity → API → Webhooks → attempts log. Meanwhile rebuild by hand: `gh workflow run deploy.yml --ref <branch>`.
+2. No run at all after a Sanity publish: check the webhook with `node .one/sanity-webhook.mjs --check` and fix it by running it without `--check` (commands.md → Rebuild on publish). Check `rebuildBranch` in `site.config.js` matches (`main` once live). If the webhook is right, the relay is the problem: Nicky looks at its logs (Cloudflare → Workers → one-rebuild-relay) and the webhook's attempts log in sanity.io/manage. Meanwhile rebuild by hand: `gh workflow run deploy.yml --ref <branch>`.
 3. Run succeeded but the page looks old: hard refresh; check the right address (staging vs live).
 
 ## Job E: form messages

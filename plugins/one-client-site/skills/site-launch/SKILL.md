@@ -36,7 +36,6 @@ Write the checklist (names only, no keys):
 > 3. **Turnstile:** a widget for `<domain>`, `www.<domain>`, `<repo>-staging.one-agency.workers.dev` and `<repo>.one-agency.workers.dev`. Secret key → GitHub secret `TURNSTILE_SECRET` in both environments; give the site key (public) to the designer.
 > 4. **Form copies in Sanity (optional):** a Sanity token with Editor rights → GitHub secret `SANITY_WRITE_TOKEN`, both environments.
 > 5. **Web Analytics:** automatic once the domain is on Cloudflare; otherwise add the site and give the designer the token (public).
-> 6. **Sanity webhook:** change the projection to `{"ref": "main"}` — only once the site is live (step 6).
 
 ## 4. Settings Claude sets (after the user's yes)
 
@@ -51,9 +50,10 @@ The deploy creates the DNS records. Ask Nicky for a redirect rule from the addre
 ## 6. Go live
 
 1. Refresh ONE's shared files (commands.md → Shared files), send the launch changes to staging and test the contact form there end to end: a real message must arrive at the recipient (ask the user to check the inbox).
-2. Ask in a question box: "This publishes the site at `https://<domain>` for everyone. Go ahead?" — "Yes, go live" / "Not yet".
-3. Publish staging to main (commands.md), watch the run, then check `https://<domain>`, `www.`, a missing page (404), `/sitemap-index.xml`, `/robots.txt` (must allow crawling) and the form.
-4. Tell Nicky to switch the Sanity webhook to `main` now. From here on, **publishing in Sanity changes the live site.**
+2. Set `rebuildBranch: 'main'` in `site.config.js` (from now on, Sanity publishes rebuild the live site), commit it on staging.
+3. Ask in a question box: "This publishes the site at `https://<domain>` for everyone. Go ahead?" — "Yes, go live" / "Not yet". With "Not yet", set `rebuildBranch` back to `'staging'` and push staging, so Sanity publishes keep updating the check link.
+4. Publish staging to main (commands.md), watch the run, then check `https://<domain>`, `www.`, a missing page (404), `/sitemap-index.xml`, `/robots.txt` (must allow crawling) and the form.
+5. Test rebuild on publish once more (publish a small change in Sanity, see a run start on `main`, undo it), and tell the user: from here on, **publishing in Sanity changes the live site.**
 
 ## 7. After launch
 
