@@ -1,0 +1,9 @@
+{
+  "name": "one-image-compress",
+  "version": "0.1.0",
+  "description": "Compress a batch of images to Squoosh quality (MozJPEG, WebP, AVIF, PNG) from a Google Drive folder, a local folder or attachments. Asks about format, quality and size, never touches the originals, and puts the results in a Compressed folder next to them.",
+  "author": {
+    "name": "ONE Creative Agency"
+  },
+  "keywords": ["images", "compress", "squoosh", "webp", "avif", "optimise", "google drive"]
+}

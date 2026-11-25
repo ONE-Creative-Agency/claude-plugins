@@ -1,0 +1,12 @@
+{
+  "name": "one-image-compress-script",
+  "private": true,
+  "description": "Squoosh-quality image compression for ONE studio staff (sharp/libvips).",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "sharp": "^0.34.0"
+  }
+}

@@ -23,6 +23,11 @@
       "source": "./plugins/threejs",
       "description": "Current three.js knowledge for 3D work: scenes, materials, lighting, shaders, post-processing, React Three Fiber, glTF optimisation. From cloudai-x/threejs-skills (MIT).",
       "homepage": "https://github.com/cloudai-x/threejs-skills"
+    },
+    {
+      "name": "one-image-compress",
+      "source": "./plugins/one-image-compress",
+      "description": "Compress a batch of images to Squoosh quality from a Google Drive folder, local folder or attachments: asks format, quality and size, never touches the originals, saves to a Compressed folder next to them."
     }
   ]
 }
