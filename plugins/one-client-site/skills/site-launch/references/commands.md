@@ -141,3 +141,23 @@ ONE's **Client sites** page (`https://claude.ai/artifact/UyvSwmAJGgrgkt3WJeNa86`
 | `updated` | now, as an ISO date-time |
 
 Write in plain words for the studio, no em dashes. The `prompt` starts with the skill to run, e.g. `/site-build Build the UnBread site from the design in ONE-Creative-Agency/unbread-source.`
+
+## SEO reports
+
+ONE's monthly SEO reports live in the private repo `ONE-Creative-Agency/one-seo-reports`, from free sources only: Google Search Console, Bing Webmaster Tools, Cloudflare Web Analytics, PageSpeed Insights and ONE's own site audit. A GitHub Action runs on the 3rd of each month for every site in its `sites.json` and commits `reports/<repo>/<YYYY-MM>.json`. Keys are repo secrets that only Nicky sets; never ask for them or put them anywhere else.
+
+- **Get the repo:** clone it into `<base>` if it isn't there (`gh repo clone ONE-Creative-Agency/one-seo-reports`), otherwise `git -C "<base>/one-seo-reports" pull --ff-only`. Node 22+, nothing to install.
+- **Run a report now:** `gh workflow run collect.yml --repo ONE-Creative-Agency/one-seo-reports -f site=<repo>` (add `-f month=YYYY-MM` for a given month), watch it (`gh run watch`), then pull. The audit alone can also run locally: `node collect.mjs --site <repo> --only audit`; don't commit local runs, the Action does that.
+- **Which sources ONE can read:** run the workflow with `-f check=true` and read the log. It lists the Search Console properties and Bing sites the keys can see.
+- **Add or change a site:** edit `sites.json` (`repo`, `client`, `url` = live home page, `searchConsole` = `sc-domain:<domain>` or the URL-prefix property, `bing` = the site URL as Bing shows it, `cloudflareSiteTag`). Leave a source `null` until ONE has access. Commit `<Client>: SEO report settings` and push to `main` (this repo has no staging).
+- **Put it on the board:** `node board-doc.mjs <repo> > "<scratchpad>/seo-<repo>.json"`, then add two things before writing it:
+  - `fixes`: the three changes that would help most, in order, each `{"title": "<what to do, one sentence>", "why": "<the evidence from the report, with numbers>", "who": "<Designer | Nicky | Client | site-launch | in Sanity>"}`. Base them only on the report (audit issues, falling clicks or positions, slow pages, searches with many impressions but few clicks, pages that rank 5 to 20). Never invent search volumes or rankings the report doesn't have.
+  - `note`: one line of context, or `""`.
+  Then write it to the SEO tab: `ArtifactData`, page `https://claude.ai/artifact/UyvSwmAJGgrgkt3WJeNa86`, `collection` `seo`, `doc_id` = repo. Read it first (`get`); replace it with `set` and `if_version`, or create it with `set`. If the write is refused, say so in one line in the wrap-up.
+
+**Search Console and Bing access, per site** (Nicky's part; Claude writes the handover):
+- **ONE sets it up:** a Search Console Domain property `sc-domain:<domain>`, verified with a DNS TXT record (easiest when the domain is on ONE's Cloudflare). Add the service account (its email is in the one-seo-reports README) as a **Restricted** user. In Bing Webmaster Tools, **Import from Google Search Console**. Submit `https://<domain>/sitemap-index.xml` in both.
+- **The client already has Search Console:** keep their property; it holds their history, and a new property would start empty. Ask the owner to add ONE's Google account as **Full** user and the service account as **Restricted** (Settings, Users and permissions, Add user). Or, if the domain's DNS is on ONE's Cloudflare, Nicky verifies ONE as a second owner of the same property with ONE's own TXT record: the client keeps theirs and both see the same data.
+- **Moving DNS to Cloudflare:** copy every `google-site-verification=` and Bing (`msvalidate`/CNAME) verification record across with the others, or the client loses verification.
+- **The client already has Bing:** ask them to add ONE's Bing account (Settings, User management, Read-only is enough), or ONE adds the site in its own account too; each verified user sees the same data.
+- **Old site replaced by the new one:** keep the same properties. Never remove the old property or its sitemap before the redirects are live.

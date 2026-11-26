@@ -1,6 +1,6 @@
 ---
 name: site-update
-description: Change a ONE client website, before or after launch. Content changes (words, photos, pages, menu, contact details) are made in Sanity, by the editor or by Claude with a yes before publishing on a live site; design and code changes go to the staging check link first, then to the live site after a clear yes. Also opens an existing site's folder, checks why a publish failed, reads contact form messages, and changes settings like the enquiry email. Use when someone says "update the Dalton site", "change the text on the about page", "add a page", "send it to staging", "publish to the live site", "the site didn't update", "work on the UnBread site", or "change where the form emails go".
+description: Change a ONE client website, before or after launch. Content changes (words, photos, pages, menu, contact details) are made in Sanity, by the editor or by Claude with a yes before publishing on a live site; design and code changes go to the staging check link first, then to the live site after a clear yes. Also opens an existing site's folder, checks why a publish failed, reads contact form messages, changes settings like the enquiry email, and runs the monthly SEO report onto the Client sites board. Use when someone says "update the Dalton site", "change the text on the about page", "add a page", "send it to staging", "publish to the live site", "the site didn't update", "work on the UnBread site", "change where the form emails go", "SEO report for UnBread", "how is the site doing in Google", or "what should we fix for SEO".
 ---
 
 # Update a client site
@@ -20,6 +20,7 @@ Live or not? Live once `main` has deployed and `SITE_URL` is set in production (
 - **Settings** (form recipient, Turnstile, analytics, domain): **Job C**.
 - **Something didn't update / a publish failed:** **Job D**.
 - **Form messages:** **Job E**.
+- **SEO report** (how it's doing in Google, what to fix for search): **Job F**. This one doesn't need the site's folder.
 
 ## Job A: content in Sanity
 
@@ -59,6 +60,13 @@ Non-secret settings (commands.md → GitHub settings): show the current value, a
 ## Job E: form messages
 
 If `SANITY_WRITE_TOKEN` is set, messages are in the Studio under "Form messages" (query `*[_type == "formSubmission"] | order(receivedAt desc)[0...20]`). Summarise them, flagging any not emailed (`emailed: false`), which means email sending needs attention (Job C). Never forward or reply to them on the user's behalf without a clear yes.
+
+## Job F: SEO report
+
+1. Get `one-seo-reports` and check the site is in its `sites.json` (commands.md → SEO reports). Not there: add it with the live address and the sources ONE has access to.
+2. If the latest report is older than this month's run, or the user asks for fresh numbers, run the workflow for this site and pull.
+3. Put it on the board's SEO tab with your three fixes (commands.md → SEO reports).
+4. Tell the user in five lines or fewer: the headline numbers against last month, the three fixes, and any source still not connected (and who connects it). Offer to make a fix that's content (Job A) or design (Job B); never start one without a yes.
 
 ## Wrap up
 
