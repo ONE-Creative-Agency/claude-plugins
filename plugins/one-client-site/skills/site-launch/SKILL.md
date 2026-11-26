@@ -63,6 +63,8 @@ The deploy creates the DNS records. Ask Nicky for a redirect rule from the addre
 
 ## 8. Wrap up
 
+First update the sites board (commands.md → Sites board): `stage: "live"` and `liveUrl` after going live; with "Not yet", keep `"staging"` and set `paused` if the client asked to wait. List what still waits on Nicky or the client.
+
 - Live address, editor address (`/admin`), where enquiries go.
 - What's still waiting on Nicky or the client.
 - "From now on, changes go through **site-update**: content in Sanity goes live when published; design changes go via staging."

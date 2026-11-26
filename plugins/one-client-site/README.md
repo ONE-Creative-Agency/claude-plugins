@@ -18,4 +18,6 @@ Takes an approved client design to a live production website, and keeps it runni
 - `staging` → `https://<repo>-staging.one-agency.workers.dev` (studio check link, never indexed)
 - `main` → the live site: `https://<repo>.one-agency.workers.dev`, then the client's domain after launch
 
+Every run updates ONE's **Client sites** page (https://claude.ai/artifact/UyvSwmAJGgrgkt3WJeNa86): stage, links, what each site waits on and the next prompt. Designers need edit access to that page.
+
 Admin steps (Cloudflare secrets, Sanity webhook and logins, DNS, Turnstile, email sending) are handed to Nicky as a checklist. Owner: Nicky.

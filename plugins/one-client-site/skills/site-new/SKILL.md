@@ -59,6 +59,8 @@ Commit ("<Client>: new site from ONE's template") on a new `staging` branch and 
 
 ## 7. Wrap up
 
+First update the sites board (commands.md → Sites board): create the row with `stage: "building"`, the check link once staging has deployed, Nicky's handover items under `waiting`, and `next` set to running site-build from the design.
+
 - **Repo / folder:** `<repo>`. "Next, open Claude Code on this folder and say **build the site from the design** (site-build)."
 - **Check link:** `https://<repo>-staging.one-agency.workers.dev` (or "after Nicky's step 1").
 - **Editor:** `<check link>/admin`, the Sanity login.

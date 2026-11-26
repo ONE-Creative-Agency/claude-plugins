@@ -62,4 +62,6 @@ If `SANITY_WRITE_TOKEN` is set, messages are in the Studio under "Form messages"
 
 ## Wrap up
 
+First update the sites board (commands.md → Sites board): `updated`, and any change to the stage, links, `waiting` or `next`. A site with no row yet gets one.
+
 What changed, where it is (staging or live), the address to check, and anything waiting on Nicky or the client.
