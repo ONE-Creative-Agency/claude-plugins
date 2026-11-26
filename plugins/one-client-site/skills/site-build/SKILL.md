@@ -66,6 +66,8 @@ Refresh ONE's shared files (commands.md → Shared files), run the large-file ch
 
 ## 9. Wrap up
 
+First update the sites board (commands.md → Sites board): `stage: "staging"` once every page is on the check link for the client (`"building"` while parts are left), what is still missing under `waiting` (native review, photos, client content), and `next` set to the next part or to site-launch.
+
 - What was built: pages, section types, document types, languages.
 - What's left before launch: native review, missing photos ("Need image" placeholders), content the client must supply, anything that differs from the design.
 - Next: **site-launch** when the client approves.

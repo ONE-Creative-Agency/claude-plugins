@@ -113,3 +113,31 @@ Document ids: `siteSettings-<lang>`, `navigation-<lang>`, `page-<name>-<lang>`. 
 ## Large files
 
 Cloudflare refuses any single file over 25 MB. Before pushing: `cd "<repo>" && find public -type f -size +24M`. Videos go in Sanity (file field) or are compressed; never commit them over 24 MB.
+
+## Sites board (after every run)
+
+ONE's **Client sites** page (`https://claude.ai/artifact/UyvSwmAJGgrgkt3WJeNa86`) shows every client site, its stage and what it waits on. Update the site's row at the end of every site-new, site-build, site-launch and site-update run, before the wrap-up message.
+
+- **Tool:** `ArtifactData` (if it isn't loaded, load it with ToolSearch `select:ArtifactData`). `url` is the page above, `collection` is `sites`, `doc_id` is the repo name.
+- **Read first:** `action: "get"`. If it exists, write with `action: "update"` and `if_version` set to the version you read (only the fields that changed). If it doesn't, create it with `action: "set"` and every field below.
+- **Can't update** (the tool isn't available, or the write is refused because this person can't edit the page): say so in one line in the wrap-up ("The sites board wasn't updated: ask Nicky for edit access to the Client sites page") and carry on. Never a reason to stop.
+- **Never** put keys, tokens, passwords or client messages on the board. Everyone at ONE with access can read it.
+
+| Field | What |
+|---|---|
+| `client` | the client's name as people say it ("UnBread") |
+| `repo` | the repo name |
+| `stage` | `not-started` · `building` (site-new done, site-build under way) · `staging` (built and on the check link for the client) · `live` (published on the client's domain) |
+| `paused` | `true` when the client asked to wait, otherwise `false` |
+| `designer` | first name of who builds it |
+| `languages` | e.g. `["English", "Arabic"]`, main language first |
+| `contact` | where the contact form goes, or `""` |
+| `design` | where the approved design is, in a few words |
+| `checkLink` | `https://<repo>-staging.one-agency.workers.dev` once staging has deployed, else `""` |
+| `liveUrl` | the live address once launched, else `""` |
+| `waiting` | what's open, at most five: `[{"who": "Nicky" \| "Client" \| "Designer", "what": "<short line>"}]`; remove items that are done |
+| `next` | `{"label": "<the next step, one line>", "prompt": "<the exact text to paste into Claude Code to do it>"}` |
+| `note` | one optional line of context, or `""` |
+| `updated` | now, as an ISO date-time |
+
+Write in plain words for the studio, no em dashes. The `prompt` starts with the skill to run, e.g. `/site-build Build the UnBread site from the design in ONE-Creative-Agency/unbread-source.`
