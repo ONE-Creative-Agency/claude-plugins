@@ -17,4 +17,6 @@ Lets ONE studio staff build client work (websites, brand guides, dashboards, 3D 
 
 Publishing runs on GitHub Actions with a keyless login to the Firebase project `one-client-pages`. Studio how-to: https://claude.ai/artifact/HvFBWRbBwt2SjyZcAC7wvK
 
+Every run updates ONE's **Client previews** page (https://claude.ai/artifact/2XVGfEHjJf4D2n55K8m63W): stage, links, what each preview waits on and the next prompt. Designers need edit access to that page.
+
 Owner: Nicky.

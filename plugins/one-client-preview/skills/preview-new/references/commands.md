@@ -215,3 +215,32 @@ To re-publish after a passcode change: `gh workflow run deploy.yml --repo ONE-Cr
 | `403` / `Permission denied` | Google-side permission | Nicky |
 | `already exists` / `not available` (site create) | Firebase site name taken | Pick another siteId |
 | "template placeholder" (run skipped) | preview.json not filled in | Fill it in |
+
+## Previews board (after every run)
+
+ONE's **Client previews** page (`https://claude.ai/artifact/2XVGfEHjJf4D2n55K8m63W`) shows every preview, its stage, its links and what it waits on. Update the preview's row at the end of every preview-new and preview-update run that changed something (a new preview, a push to staging, a publish, a passcode change), before the wrap-up message.
+
+- **Tool:** `ArtifactData` (if it isn't loaded, load it with ToolSearch `select:ArtifactData`). `url` is the page above, `collection` is `previews`, `doc_id` is the repo name.
+- **Read first:** `action: "get"`. If it exists, write with `action: "update"` and `if_version` set to the version you read (only the fields that changed). If it doesn't (a preview made before the board), create it with `action: "set"` and every field below.
+- **Can't update** (the tool isn't available, or the write is refused because this person can't edit the page): say so in one line in the wrap-up ("The previews board wasn't updated: ask Nicky for edit access to the Client previews page") and carry on. Never a reason to stop.
+- **Never** put the passcode, keys, tokens or client messages on the board. Everyone at ONE with access can read it.
+
+| Field | What |
+|---|---|
+| `client` | the client's name as people say it ("Dalton Foundry") |
+| `repo` | the repo name |
+| `kind` | what it is: `Website`, `Brand guide`, `Dashboard`, `3D walkthrough`, `Packaging`, `Logo directions`, or a short name of your own |
+| `stage` | `building` (repo made, nothing on a link yet) · `staging` (the check link has work the client link doesn't) · `published` (the client link is up to date) · `archived` (only when the user says it's finished or replaced) |
+| `designer` | first name of who is working on it |
+| `round` | the latest commit label without the client name, e.g. `R18 new about page` |
+| `credit` | `ONE Agency`, `Small Circle` or `""` |
+| `passcode` | `true` or `false` (whether there's a passcode page, never the code) |
+| `clientLink` | `https://<domain>/<slug>/` once published to the client, else `""` |
+| `checkLink` | the latest staging link, else `""` |
+| `checkLinkExpires` | 30 days after the last staging push, as `YYYY-MM-DD` |
+| `waiting` | what's open, at most five: `[{"who": "Nicky" \| "Client" \| "Designer", "what": "<short line>"}]`; remove items that are done |
+| `next` | `{"label": "<the next step, one line>", "prompt": "<the exact text to paste into Claude Code to do it>"}` |
+| `note` | one optional line of context, or `""` |
+| `updated` | now, as an ISO date-time |
+
+Write in plain words for the studio, no em dashes. The `prompt` starts with the skill to run, e.g. `/preview-update Publish the dalton-2711 preview to the client.`
