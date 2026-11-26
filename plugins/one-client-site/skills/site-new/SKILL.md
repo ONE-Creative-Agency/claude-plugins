@@ -9,7 +9,7 @@ Read `references/house-rules.md` and `references/commands.md` first. This makes 
 
 ## 1. Setup check (silent unless something's missing)
 
-`gh auth status` works, org membership is `active`, Node 22+ is installed, and a project folder is set (commands.md → Checks). Fix anything missing first.
+`gh auth status` works, org membership is `active`, Node 22+ is installed, a project folder is set (commands.md → Checks), and the Sanity tools answer (`list_organizations` includes `oubftl5le`). If anything is missing, run **site-setup** first, then carry on here.
 
 ## 2. The details
 

@@ -14,7 +14,7 @@ All commands are bash. Quote paths with spaces. Work out the OS once: `uname -s`
 | Studio team | `gh api orgs/ONE-Creative-Agency/teams/studio/memberships/$(gh api user --jq .login) --jq .state` |
 | Node (required: builds and local checks) | `node --version` (22 or newer) |
 
-Missing GitHub CLI, login or org: run the **preview-setup** skill (one-client-preview plugin) if it's installed; otherwise install with `winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements` (Mac: `brew install gh`) and log in with `gh auth login --hostname github.com --git-protocol https --web` in the background, showing the one-time code. Missing Node: `winget install --id OpenJS.NodeJS.LTS -e --source winget --accept-package-agreements --accept-source-agreements` (Mac: `brew install node`), with the user's OK. On Windows a new install needs Claude Code restarted to be on the PATH.
+Anything missing here, or the Sanity connector or Sanity login (see Sanity below): run the **site-setup** skill, which checks everything and installs or connects what's missing, asking first. Its install commands: GitHub CLI `winget install --id GitHub.cli -e --source winget --accept-package-agreements --accept-source-agreements` (Mac: `brew install gh`) and log in with `gh auth login --hostname github.com --git-protocol https --web` in the background, showing the one-time code. Missing Node: `winget install --id OpenJS.NodeJS.LTS -e --source winget --accept-package-agreements --accept-source-agreements` (Mac: `brew install node`), with the user's OK. On Windows a new install needs Claude Code restarted to be on the PATH.
 
 ## Repos
 

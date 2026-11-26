@@ -1,7 +1,7 @@
 {
   "name": "one-client-site",
-  "version": "0.3.0",
-  "description": "Build and run ONE client production websites (Astro + Sanity + Cloudflare): new site from ONE's template, build it from the approved design with content in Sanity, launch on the client's domain, and updates after launch.",
+  "version": "0.4.0",
+  "description": "Build and run ONE client production websites (Astro + Sanity + Cloudflare): first-time setup, new site from ONE's template, build it from the approved design with content in Sanity, launch on the client's domain, and updates after launch.",
   "author": {
     "name": "ONE Creative Agency"
   },
