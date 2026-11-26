@@ -46,7 +46,7 @@ Missing or older than 22: ask, then install (commands.md → Checks). Node build
 
 Sanity is where each client's pages and photos live; Claude uses its connector to create the project and fill in the content.
 - **Tools not available, or asking for authorisation:** tell the user: "In Claude, open **Customize → Connectors**, find **Sanity**, click **Connect** and log in with your work Sanity account. When it asks which organisation, pick **ONE Creative Agency**. Then start a new Claude Code session in the same folder and say **site setup** again." Claude can't connect it for them.
-- **Connected but `oubftl5le` isn't listed:** ⚠️ "Ask Nicky to invite **<your Sanity email>** to ONE's Sanity organisation, with permission to create projects. Accept the email, then run site setup again." Never create client projects in a personal organisation.
+- **Connected but `oubftl5le` isn't listed:** ⚠️ "Ask Nicky to invite **<your Sanity email>** to ONE's Sanity organisation with the **Developer** role (it can create projects). Accept the email, then run site setup again." Never create client projects in a personal organisation.
 
 ## 6. Sanity login on this computer
 
