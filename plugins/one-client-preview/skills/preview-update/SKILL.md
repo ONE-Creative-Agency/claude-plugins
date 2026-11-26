@@ -79,4 +79,10 @@ After every successful publish to the client link (never after staging):
 
 ## Wrap up
 
-Two to four lines: what changed, which link(s) it's on, and whether staging has anything the client link doesn't.
+First update the previews board (commands.md → Previews board), only if something changed:
+- **Job A or C:** `stage: "staging"`, `round`, `checkLink`, `checkLinkExpires`, `designer`, and `next` set to publishing to the client.
+- **Job B:** `stage: "published"`, `clientLink`, remove waiting items the publish settled, and `next` set to the next round.
+- **Job D:** `updated` only (never the passcode).
+- The user says a preview is finished or replaced by a newer one: `stage: "archived"`.
+
+Then two to four lines: what changed, which link(s) it's on, and whether staging has anything the client link doesn't.

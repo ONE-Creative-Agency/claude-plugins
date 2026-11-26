@@ -82,6 +82,8 @@ Changes requested: make them in `site/`, commit, push staging again, and send th
 
 ## 9. Wrap up
 
+First update the previews board (commands.md → Previews board): create the row with every field. `stage` is `building` if you stopped to build in a new session, `staging` after the staging push, `published` after the client publish. Set `next` to what comes after (build it and send it to staging, check and publish, or the next round).
+
 - **Client link:** https://<domain>/<slug>/ (commands.md → Client link). Send it to the client, and send the passcode separately.
 - **Staging link:** studio only, expires 30 days after the last staging push.
 - **Job folder copy:** where the published site was saved under `03_Work Files`.
